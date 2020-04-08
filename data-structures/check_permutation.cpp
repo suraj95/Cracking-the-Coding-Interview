@@ -1,3 +1,7 @@
+/*
+Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
+*/
+
 #define _CRT_SECURE_NO_WARNINGS
 
 #include<algorithm>
