@@ -1,0 +1,9 @@
+# R Files
+
+.Rhistory
+
+# Executables
+
+*.exe
+*.out
+*.app
