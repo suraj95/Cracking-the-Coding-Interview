@@ -1,5 +1,7 @@
 ## Problems from Cracking the Coding Interview
 
+![alt text](./images/cci.png)
+
 This repository contains solutions to problems Gayle Laakmann's "Cracking the Coding Interview". It is divided into 4 folders corresponding to the chapters in the "Interview Questions" section of the book.
 
 1. Data Structures (Chapters 1 to 5)
