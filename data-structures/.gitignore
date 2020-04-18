@@ -2,6 +2,10 @@
 
 .Rhistory
 
+# Linker files
+
+*.o
+
 # Executables
 
 *.exe
