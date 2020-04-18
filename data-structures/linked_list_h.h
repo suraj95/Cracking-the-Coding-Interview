@@ -19,12 +19,12 @@ public:
 	~linked_list();
 	
 	void add_node(int n);
-	void display();
+	void display() const;
 	void remove_node(int n);
 
-	int size();
+	int size() const;
 
-	node* show_head();
+	node* show_head() const;
 
 };
 

@@ -30,7 +30,7 @@ Write code to remove duplicates from an unsorted linked list.
 
 using namespace std;
 
-linked_list remove_duplicates(linked_list L){
+linked_list remove_duplicates(const linked_list L){
 
 	set<int> item_set;
 
@@ -54,7 +54,7 @@ linked_list remove_duplicates(linked_list L){
 	return result;
 }
 
-int kth_to_last(linked_list L, int k){
+int kth_to_last(const linked_list L, int k){
 
 	int size=L.size();
 	int position=size-k;  // 1st from behind is last

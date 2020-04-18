@@ -5,11 +5,12 @@ using namespace std;
 
 /*
 
-Class is defined in header files. We don't have to redefine here. 
+Class is declared and defined in header files. We don't have to redefine here. 
+We simply use the :: scope operator to write the function definition.
 
-Copy constructor is called when a new object is created from an existing object, as a copy of the 
-existing object. And assignment operator is called when an already initialized 
-object is assigned a new value from another existing object.
+Copy constructor is called when a new object is created from an existing object, 
+as a copy of the existing object. And assignment operator is called when an already 
+initialized object is assigned a new value from another existing object.
 
 */
 
@@ -51,24 +52,44 @@ linked_list::linked_list(const linked_list& L){
 deallocating is giving error because I haven't implemented copy and parameterized constructor. So 
 variables like head and tail are uninitialized which on deallocating give segmentation fault.
 
+
+delete does not set pointer to null. It simply deallocates the memory the pointer points to. 
+We cannot straightaway delete from the front because the moment we delete a node, we lose the 
+pointers to the next nodes.
+
 */
 
 
 linked_list::~linked_list(){
 
-    node* tmp=head;
+    node* temp=this->head; // temp is pointing to head;
+    node* store;
 
-    while(tmp!=tail)
-    {
-        node* old = tmp;
-        tmp = tmp->next;
+    if(temp==NULL){
+        return;
+    }
+    else if(temp->next==this->tail){
+        delete this->tail;
+        delete this->head;
 
-        if(old!=NULL){
-            //delete old;
-        }
+        return;
+
     }
 
-    //delete tail;
+    //this code deletes all nodes except the first one. And it is also modifying other references
+
+    // temp=this->head->next;
+    // while(temp!=NULL){
+    //     this->head->next = temp->next;
+    //     temp->next = NULL;
+    //     delete temp;
+    //     temp = this->head->next;
+    // }
+
+    // this->head=NULL;
+    // this->tail=NULL;
+    // this->sz=0;
+
 }
 
 void linked_list::add_node(int n){
@@ -79,8 +100,8 @@ void linked_list::add_node(int n){
 
     if(this->head == NULL){
 
-        head = tmp;
-        tail = tmp;
+        this->head = tmp;
+        this->tail = tmp;
     }
     else{
         this->tail->next = tmp;
@@ -111,7 +132,7 @@ void linked_list::remove_node(int n){
 }
 
 
-void linked_list::display(){
+void linked_list::display() const {
 
     if(this->head==NULL){
         return;
@@ -135,11 +156,11 @@ void linked_list::display(){
 
 }
 
-int linked_list::size(){
+int linked_list::size() const {
     return this->sz;
 }
 
-node* linked_list::show_head(){
+node* linked_list::show_head() const{
     return this->head;
 }
 
