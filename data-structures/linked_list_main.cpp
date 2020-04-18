@@ -53,6 +53,30 @@ linked_list remove_duplicates(linked_list L){
 	return result;
 }
 
+int kth_to_last(linked_list L, int k){
+
+	int size=L.size();
+	int position=size-k;  // 1st from behind is last
+
+	node* temp_node; // pointer to a node
+	temp_node=L.show_head(); // point to first node
+
+	int count=0;
+
+	while(temp_node->next!=NULL){
+
+		int item=temp_node->data;
+		if(count==position){
+			break;
+		}
+		
+		temp_node=temp_node->next;
+		count++;
+	}
+
+	return count;
+}
+
 int main(){
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
@@ -69,6 +93,13 @@ int main(){
 	b=remove_duplicates(a);
 
 	b.display();
+
+	
+	int from_last_a=kth_to_last(a,1);
+	int from_last_b=kth_to_last(b,1);
+
+	cout<<from_last_a<<"\n";
+	cout<<from_last_b<<"\n";
 
 	return 0;
 }
