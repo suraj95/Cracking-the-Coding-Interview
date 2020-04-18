@@ -92,13 +92,17 @@ int main(){
 	a.display();
 
 	linked_list b;
-
 	b=remove_duplicates(a);
-
 	b.display();
 
+	b.add_node(3);
+	b.add_node(3);
+	b.display();
+
+	b=remove_duplicates(a);
+	b.display();
 	
-	int from_last_a=kth_to_last(a,1);
+	int from_last_a=kth_to_last(a,1); 
 	int from_last_b=kth_to_last(b,2);
 
 	cout<<from_last_a<<"\n";
@@ -107,5 +111,5 @@ int main(){
 	b.remove_node(3); // cannot be first or last
 	b.display();
 
-	return 0;
+	return 0; 
 }

@@ -15,6 +15,8 @@ private:
 
 public:
 	linked_list();
+	linked_list(const linked_list& L);
+	~linked_list();
 	
 	void add_node(int n);
 	void display();
@@ -23,7 +25,7 @@ public:
 	int size();
 
 	node* show_head();
-		
+
 };
 
 #endif
