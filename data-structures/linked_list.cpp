@@ -31,6 +31,26 @@ void linked_list::add_node(int n){
     sz++;
 }
 
+// cannot be first or last, so head and tail wont change
+void linked_list::remove_node(int n){
+        
+    node *tmp;
+    node *prev;
+    tmp=head;
+
+    while(tmp->next!=NULL){
+        if(tmp->data==n){
+            prev->next=tmp->next;
+            sz--;
+            break;
+        }
+
+        prev=tmp;
+        tmp=tmp->next;
+    }
+}
+
+
 void linked_list::display(){
 
     if(head==NULL){
@@ -48,7 +68,7 @@ void linked_list::display(){
 
             tmp=tmp->next;
         }
-        int last=tmp->data;
+        int last=tmp->data; // last item
 
         cout<<last<<"->null"<<"\n";
     }

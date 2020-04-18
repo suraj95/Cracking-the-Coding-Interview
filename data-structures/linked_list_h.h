@@ -18,6 +18,7 @@ public:
 	
 	void add_node(int n);
 	void display();
+	void remove_node(int n);
 
 	int size();
 

@@ -45,6 +45,7 @@ linked_list remove_duplicates(linked_list L){
 
 		temp_node=temp_node->next;
 	}
+	item_set.insert(temp_node->data); //last item
 
 	for (int item: item_set){
 		result.add_node(item);
@@ -85,6 +86,8 @@ int main(){
 	a.add_node(2);
 	a.add_node(3);
 	a.add_node(2);
+	a.add_node(5);
+	a.add_node(6);
 
 	a.display();
 
@@ -96,10 +99,13 @@ int main(){
 
 	
 	int from_last_a=kth_to_last(a,1);
-	int from_last_b=kth_to_last(b,1);
+	int from_last_b=kth_to_last(b,2);
 
 	cout<<from_last_a<<"\n";
 	cout<<from_last_b<<"\n";
+
+	b.remove_node(3); // cannot be first or last
+	b.display();
 
 	return 0;
 }
