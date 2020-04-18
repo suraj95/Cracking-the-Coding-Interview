@@ -11,12 +11,15 @@ class linked_list{
 
 private:
 	node *head, *tail;
+	int sz; 
 
 public:
 	linked_list();
 	
 	void add_node(int n);
 	void display();
+
+	int size();
 
 	node* show_head();
 		

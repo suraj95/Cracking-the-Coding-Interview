@@ -9,6 +9,8 @@ using namespace std;
 linked_list::linked_list(){
     head = NULL;
     tail = NULL;
+
+    sz=0;
 }
 
 void linked_list::add_node(int n){
@@ -26,6 +28,7 @@ void linked_list::add_node(int n){
         tail->next = tmp;
         tail = tail->next;
     }
+    sz++;
 }
 
 void linked_list::display(){
@@ -50,6 +53,10 @@ void linked_list::display(){
         cout<<last<<"->null"<<"\n";
     }
 
+}
+
+int linked_list::size(){
+    return sz;
 }
 
 node* linked_list::show_head(){
