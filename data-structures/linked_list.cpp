@@ -7,7 +7,7 @@ using namespace std;
 
 /*
 
-This is a crude implementation of linkedlist Class for the problems in Pages 94 and 95
+This is a crude implementation of linkedlist class for the problems in Pages 94 and 95
 from the book "Cracking the Coding Interview" by Gayle Laakmann.
 
 The class is declared and defined in header files. We don't have to redefine here. 
@@ -63,7 +63,7 @@ linked_list& linked_list::operator=(const linked_list& L){
 
     // cout<<"assignment operator called"<<"\n";
 
-    // Check for self assignment 
+    // check for self assignment 
     if(this != &L){
 
         this->head=L.head;
