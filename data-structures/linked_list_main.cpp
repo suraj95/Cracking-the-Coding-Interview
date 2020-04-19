@@ -2,6 +2,14 @@
 
 Write code to remove duplicates from an unsorted linked list.
 
+Output:
+
+1->2->3->2->5->6->null
+1->2->3->5->6->null
+5
+3
+1->2->3->5->6->8->4->null
+
 */
 
 #define _CRT_SECURE_NO_WARNINGS
@@ -57,10 +65,10 @@ int main(){
 	cout<<from_last_b<<"\n";
 
 
-	// linked_list c(a);
-	// c.add_node(8);
-	// c.add_node(4);
-	// c.display();
+	linked_list c(a);
+	c.add_node(8);
+	c.add_node(4);
+	c.display();
 
 	return 0; 
 }

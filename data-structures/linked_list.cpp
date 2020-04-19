@@ -15,9 +15,11 @@ We simply use the :: scope operator to write the function definition.
 
 Known Issues
 
-1. Copy constructor giving segmentation fault
-2. Destructor giving segmentation fault
+1. Copy constructor giving segmentation fault (when adding nodes 3 and 5).
+2. Destructor giving segmentation fault, so temporarily commented out.
 3. Modification after using assignment operator giving segmentation fault.
+4. Program immediately after starting gives segmentation fault (very rare, 
+   but happens and when it happens even the gdb debugger gets frozen).
 
 */
 
@@ -103,8 +105,15 @@ void linked_list::add_node(int n){
         this->head->data = n;
     }
     else{
+
+        /*
+            According to gdb, the null check condition statement in the while loop 
+            below gives segmentation fault on random occasions (usually when adding
+            nodes 5 or 3 in the copy constructor for linked_list object c)
+        */
+
         // check if next is null
-        while(tmp->next!=NULL){
+        while(tmp->next!=NULL){ 
             tmp=tmp->next;
         }
 
