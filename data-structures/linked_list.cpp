@@ -7,12 +7,11 @@ using namespace std;
 
 /*
 
-Class is declared and defined in header files. We don't have to redefine here. 
-We simply use the :: scope operator to write the function definition.
+This is a crude implementation of linkedlist class for the problems in Pages 94 and 95
+from Gayle Laakmans "Cracking the Coding Interview."
 
-Copy constructor is called when a new object is created from an existing object, 
-as a copy of the existing object. And assignment operator is called when an already 
-initialized object is assigned a new value from another existing object.
+class is declared and defined in header files. We don't have to redefine here. 
+We simply use the :: scope operator to write the function definition.
 
 */
 
@@ -24,6 +23,14 @@ linked_list::linked_list(){
 
     this->sz=0;
 }
+
+/*
+
+Copy constructor is called when a new object is created from an existing object, 
+as a copy of the existing object. And assignment operator is called when an already 
+initialized object is assigned a new value from another existing object.
+
+*/
 
 // copy constructor
 linked_list::linked_list(const linked_list& L){
@@ -60,19 +67,21 @@ linked_list& linked_list::operator=(const linked_list& L){
    return *this;    
 }
 
-
 /* 
 
-deallocating is giving error because I haven't implemented copy and parameterized constructor. So 
-variables like head and tail are uninitialized which on deallocating give segmentation fault.
-
-
 delete does not set pointer to null. It simply deallocates the memory the pointer points to. 
-We cannot straightaway delete from the front because the moment we delete a node, we lose the 
+We cannot just straightaway delete from the front because the moment we delete a node, we lose the 
 pointers to the next nodes.
 
-*/
+Initally deallocating was giving me error because I had not implemented copy and parameterized 
+constructor. So variables like head and tail are uninitialized which on deallocating give 
+segmentation fault. 
 
+Now I don't get segmentation fault, but I cannot modify linked_list after equality operator because
+it returns a reference to the argument that was passed. I remember facing this problem in my ICS45C
+class by Thornton, and the fix was definitely not straightforward. I'll leave this for now.
+
+*/
 
 linked_list::~linked_list(){
 
@@ -89,10 +98,7 @@ linked_list::~linked_list(){
 
     }
 
-    // this code deletes all nodes except the first one. But for some reason it is 
-    // also modifying other references
-
-    // temp=this->head->next;
+    // temp=this->head;
     // while(temp!=NULL){
     //     this->head->next = temp->next;
     //     temp->next = NULL;

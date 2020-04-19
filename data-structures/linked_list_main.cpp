@@ -44,16 +44,10 @@ int main(){
 
 	a.display();
 
-/*
-	In the code snippet below, the argument to remove_duplicates calls copy constructor
-	but when the function returns the result, it calls equality operator which I had not 
-	implemented properly and was causing a segmentation error.
-*/
-
 	linked_list b;
 	a.remove_duplicates();
 
-	b=a;
+	b=a; // equality operator, don't modify b after this
 	b.display();
 	
 	int from_last_a=a.kth_to_last(1); 
@@ -62,6 +56,8 @@ int main(){
 	cout<<from_last_a<<"\n";
 	cout<<from_last_b<<"\n";
 
+	//a.add_node(4);
+	//a.display();
 
 	return 0; 
 }
