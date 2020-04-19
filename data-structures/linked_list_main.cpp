@@ -47,7 +47,7 @@ int main(){
 	linked_list b;
 	a.remove_duplicates();
 
-	b=a; // equality operator, don't modify b after this
+	b=a; // assignment operator, don't modify b after this
 	b.display();
 	
 	int from_last_a=a.kth_to_last(1); 

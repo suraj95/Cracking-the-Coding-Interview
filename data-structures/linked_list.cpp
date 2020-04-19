@@ -7,10 +7,10 @@ using namespace std;
 
 /*
 
-This is a crude implementation of linkedlist class for the problems in Pages 94 and 95
+This is a crude implementation of linkedlist Class for the problems in Pages 94 and 95
 from Gayle Laakmans "Cracking the Coding Interview."
 
-class is declared and defined in header files. We don't have to redefine here. 
+The Class is declared and defined in header files. We don't have to redefine here. 
 We simply use the :: scope operator to write the function definition.
 
 */
@@ -53,10 +53,10 @@ linked_list::linked_list(const linked_list& L){
     
 }
 
-// equality operator
+// assignment operator
 linked_list& linked_list::operator=(const linked_list& L){
 
-    // cout<<"equality operator called"<<"\n";
+    // cout<<"assignment operator called"<<"\n";
 
     // Check for self assignment 
     if(this != &L){
@@ -77,7 +77,7 @@ Initally deallocating was giving me error because I had not implemented copy and
 constructor. So variables like head and tail are uninitialized which on deallocating give 
 segmentation fault. 
 
-Now I don't get segmentation fault, but I cannot modify linked_list after equality operator because
+Now I don't get segmentation fault, but I cannot modify linked_list after assignment operator because
 it returns a reference to the argument that was passed. I remember facing this problem in my ICS45C
 class by Thornton, and the fix was definitely not straightforward. I'll leave this for now.
 
