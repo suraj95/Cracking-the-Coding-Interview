@@ -8,10 +8,16 @@ using namespace std;
 /*
 
 This is a crude implementation of linkedlist Class for the problems in Pages 94 and 95
-from Gayle Laakmans "Cracking the Coding Interview."
+from the book "Cracking the Coding Interview" by Gayle Laakmann.
 
-The Class is declared and defined in header files. We don't have to redefine here. 
+The class is declared and defined in header files. We don't have to redefine here. 
 We simply use the :: scope operator to write the function definition.
+
+Known Issues
+
+1. Copy constructor giving segmentation fault
+2. Destructor giving segmentation fault
+3. Modification after using assignment operator giving segmentation fault.
 
 */
 
@@ -36,11 +42,10 @@ initialized object is assigned a new value from another existing object.
 linked_list::linked_list(const linked_list& L){
 
     // cout<<"copy constructor called"<<"\n";
-
-    node* tmp=L.head;
+    this->head=NULL;
     this->sz=0;
 
-    this->head=NULL;
+    node* tmp=L.head;
 
     while(tmp->next!=NULL){
         int item=tmp->data;
@@ -48,9 +53,9 @@ linked_list::linked_list(const linked_list& L){
 
         tmp=tmp->next;
     }
+
     int last_item=tmp->data;
     this->add_node(last_item);
-    
 }
 
 // assignment operator
@@ -60,6 +65,7 @@ linked_list& linked_list::operator=(const linked_list& L){
 
     // Check for self assignment 
     if(this != &L){
+
         this->head=L.head;
         this->sz=L.sz;
     }
@@ -84,31 +90,7 @@ class by Thornton, and the fix was definitely not straightforward. I'll leave th
 */
 
 linked_list::~linked_list(){
-
-    node* temp=this->head; // temp is pointing to head;
-    node* store;
-
-    if(temp==NULL){
-        return;
-    }
-    else if(temp->next==NULL){
-        delete this->head;
-
-        return;
-
-    }
-
-    // temp=this->head;
-    // while(temp!=NULL){
-    //     this->head->next = temp->next;
-    //     temp->next = NULL;
-    //     delete temp;
-    //     temp = this->head->next;
-    // }
-
-    this->head=NULL;
-    this->sz=0;
-
+    this->remove_all();
 }
 
 void linked_list::add_node(int n){

@@ -2,6 +2,10 @@
 
 .Rhistory
 
+# Xcode dSYM Files
+
+*.dSYM
+
 # Linker files
 
 *.o

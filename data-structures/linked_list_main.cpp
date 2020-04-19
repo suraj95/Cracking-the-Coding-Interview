@@ -56,8 +56,11 @@ int main(){
 	cout<<from_last_a<<"\n";
 	cout<<from_last_b<<"\n";
 
-	//a.add_node(4);
-	//a.display();
+
+	// linked_list c(a);
+	// c.add_node(8);
+	// c.add_node(4);
+	// c.display();
 
 	return 0; 
 }

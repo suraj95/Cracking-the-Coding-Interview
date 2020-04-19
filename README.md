@@ -14,3 +14,5 @@ Initially, C++ was under assault as fans of Java/Python/C# claimed that C++ was 
 
 Most interviewers won't ask about specific algorithms for binary tree balancing or other complex algorithms. Frankly, being several years out of school, they probably don't remember these algorithms either. The more problems you do, the more developed your instinct on which data structure to apply will be. You will also develop a more finely tuned instinct as to which of these approaches is the most useful. Practicing implementing the data structures and algorithm (on paper, and then on a computer) is also a great exercise. It will help you learn how the internals of the data structures work, which is important for many interviews.
 
+
+GDB debugger tutorial (for segmentation faults):- http://www.unknownroad.com/rtfm/gdbtut/gdbtoc.html
