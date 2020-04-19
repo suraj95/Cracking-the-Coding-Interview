@@ -30,53 +30,6 @@ Write code to remove duplicates from an unsorted linked list.
 
 using namespace std;
 
-linked_list remove_duplicates(const linked_list L){
-
-	set<int> item_set;
-
-	node* temp_node; // pointer to a node
-	temp_node=L.show_head(); // point to first node
-
-	linked_list result;
-
-	while(temp_node->next!=NULL){
-		int item=temp_node->data;
-		item_set.insert(item);
-
-		temp_node=temp_node->next;
-	}
-	item_set.insert(temp_node->data); //last item
-
-	for (int item: item_set){
-		result.add_node(item);
-	}
-
-	return result;
-}
-
-int kth_to_last(const linked_list L, int k){
-
-	int size=L.size();
-	int position=size-k;  // 1st from behind is last
-
-	node* temp_node; // pointer to a node
-	temp_node=L.show_head(); // point to first node
-
-	int count=0;
-
-	while(temp_node->next!=NULL){
-
-		int item=temp_node->data;
-		if(count==position){
-			break;
-		}
-		
-		temp_node=temp_node->next;
-		count++;
-	}
-
-	return count;
-}
 
 int main(){
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
@@ -91,25 +44,24 @@ int main(){
 
 	a.display();
 
+/*
+	In the code snippet below, the argument to remove_duplicates calls copy constructor
+	but when the function returns the result, it calls equality operator which I had not 
+	implemented properly and was causing a segmentation error.
+*/
+
 	linked_list b;
-	b=remove_duplicates(a);
-	b.display();
+	a.remove_duplicates();
 
-	b.add_node(3);
-	b.add_node(3);
-	b.display();
-
-	b=remove_duplicates(a);
+	b=a;
 	b.display();
 	
-	int from_last_a=kth_to_last(a,1); 
-	int from_last_b=kth_to_last(b,2);
+	int from_last_a=a.kth_to_last(1); 
+	int from_last_b=b.kth_to_last(2);
 
 	cout<<from_last_a<<"\n";
 	cout<<from_last_b<<"\n";
 
-	b.remove_node(3); // cannot be first or last
-	b.display();
 
 	return 0; 
 }

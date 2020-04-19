@@ -10,19 +10,24 @@ struct node{
 class linked_list{
 
 private:
-	node *head, *tail;
+	node *head;
 	int sz; 
 
 public:
 	linked_list();
 	linked_list(const linked_list& L);
+	linked_list& operator=(const linked_list& L);
 	~linked_list();
 	
 	void add_node(int n);
-	void display() const;
 	void remove_node(int n);
+	void remove_all();
+	void remove_duplicates();
+
 
 	int size() const;
+	int kth_to_last(int k) const;
+	void display() const;
 
 	node* show_head() const;
 

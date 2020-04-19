@@ -1,4 +1,6 @@
 #include<iostream>
+#include<set>
+
 #include "linked_list_h.h"
 
 using namespace std;
@@ -19,31 +21,43 @@ initialized object is assigned a new value from another existing object.
 linked_list::linked_list(){
 
     this->head = NULL;
-    this->tail = NULL;
 
-    sz=0;
+    this->sz=0;
 }
 
 // copy constructor
 linked_list::linked_list(const linked_list& L){
 
-    //cout<<"copy constructor called"<<"\n";
+    // cout<<"copy constructor called"<<"\n";
 
     node* tmp=L.head;
     this->sz=0;
 
     this->head=NULL;
-    this->tail=NULL;
-
-// final head and tail are taken care of in add_node()
 
     while(tmp->next!=NULL){
-        this->add_node(tmp->data); 
+        int item=tmp->data;
+        this->add_node(item); 
 
         tmp=tmp->next;
     }
-    this->add_node(tmp->data);
+    int last_item=tmp->data;
+    this->add_node(last_item);
     
+}
+
+// equality operator
+linked_list& linked_list::operator=(const linked_list& L){
+
+    // cout<<"equality operator called"<<"\n";
+
+    // Check for self assignment 
+    if(this != &L){
+        this->head=L.head;
+        this->sz=L.sz;
+    }
+
+   return *this;    
 }
 
 
@@ -68,15 +82,15 @@ linked_list::~linked_list(){
     if(temp==NULL){
         return;
     }
-    else if(temp->next==this->tail){
-        delete this->tail;
+    else if(temp->next==NULL){
         delete this->head;
 
         return;
 
     }
 
-    //this code deletes all nodes except the first one. And it is also modifying other references
+    // this code deletes all nodes except the first one. But for some reason it is 
+    // also modifying other references
 
     // temp=this->head->next;
     // while(temp!=NULL){
@@ -86,31 +100,33 @@ linked_list::~linked_list(){
     //     temp = this->head->next;
     // }
 
-    // this->head=NULL;
-    // this->tail=NULL;
-    // this->sz=0;
+    this->head=NULL;
+    this->sz=0;
 
 }
 
 void linked_list::add_node(int n){
         
-    node *tmp = new node;
-    tmp->data = n;
-    tmp->next = NULL;
+    node *tmp=this->head; //points to head
 
-    if(this->head == NULL){
+    if(tmp == NULL){
 
-        this->head = tmp;
-        this->tail = tmp;
+        this->head = new node;
+        this->head->data = n;
     }
     else{
-        this->tail->next = tmp;
-        this->tail = tail->next;
+        // check if next is null
+        while(tmp->next!=NULL){
+            tmp=tmp->next;
+        }
+
+        tmp->next=new node;
+        tmp->next->data=n;
     }
     this->sz++;
 }
 
-// cannot be first or last, so head and tail won't change
+// cannot be first or last
 void linked_list::remove_node(int n){
         
     node *tmp;
@@ -120,7 +136,6 @@ void linked_list::remove_node(int n){
     while(tmp->next!=NULL){
         if(tmp->data==n){
             prev->next=tmp->next;
-            sz--;
             break;
         }
 
@@ -128,11 +143,77 @@ void linked_list::remove_node(int n){
         tmp=tmp->next;
     }
 
+    this->sz--;
     delete tmp; // tmp points to the node we removed
 }
 
+void linked_list::remove_all(){	
+
+    // node* temp=this->head;
+
+    // while(temp!=NULL){
+    //     this->head->next = temp->next;
+    //     temp->next = NULL;
+    //     delete temp;
+    //     temp = this->head->next;
+    // }
+
+	this->sz=0;
+	this->head=NULL;
+
+}
+
+void linked_list::remove_duplicates(){
+
+	set<int> item_set;
+
+	node* temp_node; // pointer to a node
+	temp_node=this->head; // point to first node
+
+	this->remove_all(); //clears the whole linked list
+
+	while(temp_node->next!=NULL){
+		int item=temp_node->data;
+		item_set.insert(item);
+
+		temp_node=temp_node->next;
+	}
+	item_set.insert(temp_node->data); //last item
+
+	for (int item: item_set){
+		this->add_node(item);
+	}
+
+}
+
+int linked_list::kth_to_last(int k) const {
+
+	int position=this->sz-k-1;  // 1st from behind is last
+
+	node* temp_node; // pointer to a node
+	temp_node=this->head; // point to first node
+
+	int idx=0;
+
+	while(temp_node!=NULL){
+
+		int item=temp_node->data;
+		if(idx==position){
+			return item;
+		}
+		
+		temp_node=temp_node->next;
+		idx++;
+	}
+
+	return -1; // to indicate a hit has not been found
+}
+
+
 
 void linked_list::display() const {
+
+    //cout<<this->sz<<"\n";
 
     if(this->head==NULL){
         return;
@@ -160,7 +241,7 @@ int linked_list::size() const {
     return this->sz;
 }
 
-node* linked_list::show_head() const{
+node* linked_list::show_head() const {
     return this->head;
 }
 
