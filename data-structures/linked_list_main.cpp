@@ -1,6 +1,8 @@
 /*
 
-Write code to remove duplicates from an unsorted linked list.
+This is a crude implementation of linkedlist class for the problems in Pages 94 and 95
+from the book "Cracking the Coding Interview" by Gayle Laakmann. Refer to linked_list.cpp 
+for details.
 
 Output:
 
@@ -9,6 +11,14 @@ Output:
 5
 3
 1->2->3->5->6->8->4->null
+
+Known Issues:
+
+1. Copy constructor giving segmentation fault (when adding nodes 3 and 5).
+2. Destructor giving segmentation fault, so temporarily commented out.
+3. Modification after using assignment operator giving segmentation fault.
+4. Program immediately after starting gives segmentation fault (very rare, 
+   but happens and when it happens even the gdb debugger gets frozen).
 
 */
 

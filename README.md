@@ -17,6 +17,6 @@ Most interviewers won't ask about specific algorithms for binary tree balancing 
 
 GDB debugger tutorial (for segmentation faults):- http://www.unknownroad.com/rtfm/gdbtut/gdbtoc.html
 
-GDB installation for MacOSX:- https://www.ics.uci.edu/~pattis/common/handouts/macmingweclipse/allexperimental/mac-gdb-install.html
+GDB installation for MacOS:- https://www.ics.uci.edu/~pattis/common/handouts/macmingweclipse/allexperimental/mac-gdb-install.html
 
 macOS uses the Xcode Developer tools for compiling. These tools include lldb which is very similar to gdb:- https://lldb.llvm.org/use/map.html

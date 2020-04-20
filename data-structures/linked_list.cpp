@@ -7,19 +7,8 @@ using namespace std;
 
 /*
 
-This is a crude implementation of linkedlist class for the problems in Pages 94 and 95
-from the book "Cracking the Coding Interview" by Gayle Laakmann.
-
 The class is declared and defined in header files. We don't have to redefine here. 
 We simply use the :: scope operator to write the function definition.
-
-Known Issues
-
-1. Copy constructor giving segmentation fault (when adding nodes 3 and 5).
-2. Destructor giving segmentation fault, so temporarily commented out.
-3. Modification after using assignment operator giving segmentation fault.
-4. Program immediately after starting gives segmentation fault (very rare, 
-   but happens and when it happens even the gdb debugger gets frozen).
 
 */
 
@@ -107,7 +96,7 @@ void linked_list::add_node(int n){
     else{
 
         /*
-            According to gdb, the null check condition statement in the while loop 
+            According to gdb debugger, the null check condition statement in the while loop 
             below gives segmentation fault on random occasions (usually when adding
             nodes 5 or 3 in the copy constructor for linked_list object c)
         */
