@@ -97,8 +97,18 @@ void linked_list::add_node(int n){
 
         /*
             According to gdb debugger, the null check condition statement in the while loop 
-            below gives segmentation fault on random occasions (usually when adding
-            nodes 5 or 3 in the copy constructor for linked_list object c)
+            below gives segmentation fault on random occasions (usually when adding nodes 5 or 3) 
+            suggesting that there is an issue with adding a node at the end.
+
+            Segmentation fault seems to be coming from tmp->next when tmp is NULL. I copy pasted 
+            the class template from the link below and improved up it: 
+
+            https://www.codesdope.com/blog/article/c-linked-lists-in-c-singly-linked-list/
+
+            The author had used a tail pointer to keep track of the tail of the linkled list 
+            which I removed because it seemed unnecessary. But I can how the tail pointer can be 
+            useful for adding nodes at O(1).
+
         */
 
         // check if next is null
@@ -108,6 +118,7 @@ void linked_list::add_node(int n){
 
         tmp->next=new node;
         tmp->next->data=n;
+
     }
     this->sz++;
 }

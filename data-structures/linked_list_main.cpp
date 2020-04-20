@@ -14,11 +14,10 @@ Output:
 
 Known Issues:
 
-1. Copy constructor giving segmentation fault (when adding nodes 3 and 5).
+1. add_node() method giving segmentation fault (usually when adding nodes 3 and 5) sometimes in copy 
+	constructor while other times in the first linked_list itself.
 2. Destructor giving segmentation fault, so temporarily commented out.
 3. Modification after using assignment operator giving segmentation fault.
-4. Program immediately after starting gives segmentation fault (very rare, 
-   but happens and when it happens even the gdb debugger gets frozen).
 
 */
 
