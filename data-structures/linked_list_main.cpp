@@ -14,10 +14,14 @@ Output:
 
 Known Issues:
 
+1. Destructor giving segmentation fault, so temporarily commented out.
+2. Modification after using assignment operator giving segmentation fault.
+
+Fixed Issues
+
 1. add_node() method giving segmentation fault (usually when adding nodes 3 and 5) sometimes in copy 
-	constructor while other times in the first linked_list itself.
-2. Destructor giving segmentation fault, so temporarily commented out.
-3. Modification after using assignment operator giving segmentation fault.
+constructor while other times in the first linked_list itself. Was happening because of uninitialized 
+pointer.
 
 */
 

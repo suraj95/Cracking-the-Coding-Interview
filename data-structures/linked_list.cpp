@@ -17,7 +17,6 @@ We simply use the :: scope operator to write the function definition.
 linked_list::linked_list(){
 
     this->head = NULL;
-
     this->sz=0;
 }
 
@@ -92,6 +91,10 @@ void linked_list::add_node(int n){
 
         this->head = new node;
         this->head->data = n;
+
+        // Uninitialized pointer is NOT the same as nullptr !
+
+        this->head->next=NULL;
     }
     else{
 
@@ -106,8 +109,8 @@ void linked_list::add_node(int n){
             https://www.codesdope.com/blog/article/c-linked-lists-in-c-singly-linked-list/
 
             The author had used a tail pointer to keep track of the tail of the linkled list 
-            which I removed because it seemed unnecessary. But I can how the tail pointer can be 
-            useful for adding nodes at O(1).
+            which I removed because it seemed unnecessary. But I can see how the tail pointer can 
+            be useful for adding nodes at O(1).
 
         */
 
@@ -118,6 +121,9 @@ void linked_list::add_node(int n){
 
         tmp->next=new node;
         tmp->next->data=n;
+
+        // Uninitialized pointer is NOT the same as nullptr !
+        tmp->next->next=NULL;
 
     }
     this->sz++;
