@@ -80,7 +80,9 @@ class by Thornton, and the fix was definitely not straightforward. I'll leave th
 */
 
 linked_list::~linked_list(){
-    this->remove_all();
+
+    //cout<<"destructor called"<<"\n";
+    //this->remove_all();
 }
 
 void linked_list::add_node(int n){
@@ -152,14 +154,20 @@ void linked_list::remove_node(int n){
 
 void linked_list::remove_all(){	
 
-    // node* temp=this->head;
+    node* current=this->head;
+    node* next=NULL;
 
-    // while(temp!=NULL){
-    //     this->head->next = temp->next;
-    //     temp->next = NULL;
-    //     delete temp;
-    //     temp = this->head->next;
-    // }
+    while(current!=NULL){
+
+        if(current->next==NULL){
+            break;
+        }
+        else{
+            next=current->next; // store reference to next node
+            delete current; // delete the current node
+            current = next; //move pointer to next node
+        }
+    }
 
 	this->sz=0;
 	this->head=NULL;
@@ -171,9 +179,12 @@ void linked_list::remove_duplicates(){
 	set<int> item_set;
 
 	node* temp_node; // pointer to a node
-	temp_node=this->head; // point to first node
+	temp_node=this->head; // point to head
 
-	this->remove_all(); //clears the whole linked list
+    this->sz=0;
+    this->head=NULL; // reset head
+
+	//this->remove_all(); //clears the whole linked list
 
 	while(temp_node->next!=NULL){
 		int item=temp_node->data;

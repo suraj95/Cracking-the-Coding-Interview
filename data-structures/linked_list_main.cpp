@@ -14,14 +14,17 @@ Output:
 
 Known Issues:
 
-1. Destructor giving segmentation fault, so temporarily commented out.
-2. Modification after using assignment operator giving segmentation fault.
+1. Destructor giving segmentation fault because "shallow copies" reference same object which 
+when deallocated twice gives "Abort trap: 6" error. Temporarily commented out the remove_all() 
+method.
 
 Fixed Issues
 
 1. add_node() method giving segmentation fault (usually when adding nodes 3 and 5) sometimes in copy 
 constructor while other times in the first linked_list itself. Was happening because of uninitialized 
 pointer.
+2. Modification after using assignment operator giving segmentation fault due to going out of bounds.
+3. Destructor giving segmentation fault due to going out of bounds.
 
 */
 
@@ -68,8 +71,11 @@ int main(){
 	linked_list b;
 	a.remove_duplicates();
 
-	b=a; // assignment operator, don't modify b after this
+	b=a;
+	b.add_node(7); // this is basically a "shallow copy". Both b and a point to same referenced object
+	b.add_node(9); // so changes in b will also be reflected in a.
 	b.display();
+	a.display();
 	
 	int from_last_a=a.kth_to_last(1); 
 	int from_last_b=b.kth_to_last(2);
