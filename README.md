@@ -19,4 +19,4 @@ GDB debugger tutorial (for segmentation faults):- http://www.unknownroad.com/rtf
 
 GDB installation for MacOS:- https://www.ics.uci.edu/~pattis/common/handouts/macmingweclipse/allexperimental/mac-gdb-install.html
 
-macOS uses the Xcode Developer tools for compiling. These tools include lldb which is very similar to gdb:- https://lldb.llvm.org/use/map.html
+macOS uses Xcode Developer tools for compiling, which uses LLDB debugger which is very similar to GDB:- https://lldb.llvm.org/use/map.html
