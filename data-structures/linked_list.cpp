@@ -56,8 +56,9 @@ linked_list& linked_list::operator=(const linked_list& L){
     // check for self assignment 
     if(this != &L){
 
-        this->head=L.head;
-        this->sz=L.sz;
+        linked_list temp(L);
+        std::swap(head, temp.head);
+        std::swap(sz, temp.sz);
     }
 
    return *this;    
@@ -82,7 +83,7 @@ class by Thornton, and the fix was definitely not straightforward. I'll leave th
 linked_list::~linked_list(){
 
     //cout<<"destructor called"<<"\n";
-    //this->remove_all();
+    this->remove_all();
 }
 
 void linked_list::add_node(int n){

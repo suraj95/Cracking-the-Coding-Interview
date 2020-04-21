@@ -14,17 +14,18 @@ Output:
 
 Known Issues:
 
+- No new issues
+
+Fixed Issues:
+
 1. Destructor giving segmentation fault because "shallow copies" reference same object which 
 when deallocated twice gives "Abort trap: 6" error. Temporarily commented out the remove_all() 
 method.
-
-Fixed Issues
-
-1. add_node() method giving segmentation fault (usually when adding nodes 3 and 5) sometimes in copy 
+2. add_node() method giving segmentation fault (usually when adding nodes 3 and 5) sometimes in copy 
 constructor while other times in the first linked_list itself. Was happening because of uninitialized 
 pointer.
-2. Modification after using assignment operator giving segmentation fault due to going out of bounds.
-3. Destructor giving segmentation fault due to going out of bounds.
+3. Modification after using assignment operator giving segmentation fault due to going out of bounds.
+4. Destructor giving segmentation fault due to going out of bounds.
 
 */
 
@@ -72,8 +73,8 @@ int main(){
 	a.remove_duplicates();
 
 	b=a;
-	b.add_node(7); // this is basically a "shallow copy". Both b and a point to same referenced object
-	b.add_node(9); // so changes in b will also be reflected in a.
+	b.add_node(7);
+	b.add_node(9);
 	b.display();
 	a.display();
 	
