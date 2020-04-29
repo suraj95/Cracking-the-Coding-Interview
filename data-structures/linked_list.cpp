@@ -73,10 +73,6 @@ Initally deallocating was giving me error because I had not implemented copy and
 constructor. So variables like head and tail are uninitialized which on deallocating give 
 segmentation fault. 
 
-Now I don't get segmentation fault, but I cannot modify linked_list after assignment operator because
-it returns a reference to the argument that was passed. I remember facing this problem in my ICS45C
-class by Thornton, and the fix was definitely not straightforward. I'll leave this for now.
-
 */
 
 linked_list::~linked_list(){
@@ -100,12 +96,9 @@ void linked_list::add_node(int n){
     else{
 
         /*
-            According to gdb debugger, the null check condition statement in the while loop 
-            below gives segmentation fault on random occasions (usually when adding nodes 5 or 3) 
-            suggesting that there is an issue with adding a node at the end.
 
-            Segmentation fault seems to be coming from tmp->next when tmp is NULL. I copy pasted 
-            the class template from the link below and improved up it: 
+            Gdb debugger revealed that Segmentation fault was coming from tmp->next statement below
+            when tmp is NULL. I copy pasted the class template from the link below and improved up it: 
 
             https://www.codesdope.com/blog/article/c-linked-lists-in-c-singly-linked-list/
 
@@ -177,13 +170,12 @@ void linked_list::remove_duplicates(){
 
 	set<int> item_set;
 
+    // temp is a copy
+    linked_list temp(*this);
+    linked_list::~linked_list();
+
 	node* temp_node; // pointer to a node
-	temp_node=this->head; // point to head
-
-    this->sz=0;
-    this->head=NULL; // reset head
-
-	//this->remove_all(); //clears the whole linked list
+	temp_node=temp.show_head(); // point to head
 
 	while(temp_node->next!=NULL){
 		int item=temp_node->data;
