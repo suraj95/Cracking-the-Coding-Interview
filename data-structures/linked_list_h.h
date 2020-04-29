@@ -23,7 +23,8 @@ public:
 	void remove_node(int n);
 	void remove_all();
 	void remove_duplicates();
-
+	
+	bool check_palindrome();
 
 	int size() const;
 	int kth_to_last(int k) const;

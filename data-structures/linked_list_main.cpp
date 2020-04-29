@@ -89,5 +89,15 @@ int main(){
 	c.add_node(4);
 	c.display();
 
+	cout<<std::boolalpha<<c.check_palindrome()<<"\n";
+
+	linked_list d;
+	d.add_node(1);
+	d.add_node(2);
+	d.add_node(2);
+	d.add_node(1);
+	d.display();
+	cout<<std::boolalpha<<d.check_palindrome()<<"\n";
+
 	return 0; 
 }

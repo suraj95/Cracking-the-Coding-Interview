@@ -1,5 +1,6 @@
 #include<iostream>
 #include<set>
+#include<stack>
 
 #include "linked_list_h.h"
 
@@ -212,6 +213,60 @@ int linked_list::kth_to_last(int k) const {
 	}
 
 	return -1; // to indicate a hit has not been found
+}
+
+bool linked_list::check_palindrome(){
+
+    bool mid_flag=false;
+    stack<int> item_stack;
+
+    // Odd palindromes like radar, civic
+    if(this->sz%2!=0){
+        mid_flag=true;
+    }
+
+    node* temp;
+    temp=this->head;
+
+    int idx=0;
+    int mid_index=this->sz/2;
+
+    while(temp!=NULL){
+
+        int pushed_item=temp->data;
+
+        // keep adding to stack till mid is reached
+        if(idx<mid_index){
+            item_stack.push(pushed_item);
+        }
+
+        // start popping from stack after mid is crossed
+        else{
+            // odd palindrome
+            if(mid_flag){
+
+                // ignore the middle value
+                mid_flag=false;
+            }
+
+            else{
+
+                int popped_item=item_stack.top();
+
+                // popped and pushed item are different
+                if(popped_item!=pushed_item){
+                    return false;
+                }
+
+                item_stack.pop();
+            }
+        }
+
+        temp=temp->next;
+        idx++;
+    }
+
+    return true;
 }
 
 
