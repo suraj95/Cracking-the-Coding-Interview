@@ -19,8 +19,7 @@ Known Issues:
 Fixed Issues:
 
 1. Destructor giving segmentation fault because "shallow copies" reference same object which 
-when deallocated twice gives "Abort trap: 6" error. Temporarily commented out the remove_all() 
-method.
+when deallocated twice gives "Abort trap: 6" error.
 2. add_node() method giving segmentation fault (usually when adding nodes 3 and 5) sometimes in copy 
 constructor while other times in the first linked_list itself. Was happening because of uninitialized 
 pointer.

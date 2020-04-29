@@ -31,7 +31,6 @@ initialized object is assigned a new value from another existing object.
 // copy constructor
 linked_list::linked_list(const linked_list& L){
 
-    // cout<<"copy constructor called"<<"\n";
     this->head=NULL;
     this->sz=0;
 
@@ -51,12 +50,12 @@ linked_list::linked_list(const linked_list& L){
 // assignment operator
 linked_list& linked_list::operator=(const linked_list& L){
 
-    // cout<<"assignment operator called"<<"\n";
-
     // check for self assignment 
     if(this != &L){
 
         linked_list temp(L);
+
+        // Move Semantics (turn expensive copies to cheap moves)
         std::swap(head, temp.head);
         std::swap(sz, temp.sz);
     }
@@ -82,7 +81,6 @@ class by Thornton, and the fix was definitely not straightforward. I'll leave th
 
 linked_list::~linked_list(){
 
-    //cout<<"destructor called"<<"\n";
     this->remove_all();
 }
 
@@ -227,8 +225,6 @@ int linked_list::kth_to_last(int k) const {
 
 
 void linked_list::display() const {
-
-    //cout<<this->sz<<"\n";
 
     if(this->head==NULL){
         return;
