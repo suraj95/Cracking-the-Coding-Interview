@@ -28,7 +28,8 @@ public:
 
 	int size() const;
 	int kth_to_last(int k) const;
-	void display() const;
+	void display();
+	int represent_number();
 
 	node* show_head() const;
 

@@ -54,6 +54,16 @@ pointer.
 
 using namespace std;
 
+int sum_lists(linked_list& L1, linked_list& L2){
+
+	int number1=L1.represent_number();
+	int number2=L2.represent_number();
+
+	int result=number1+number2;
+
+	return result;
+}
+
 
 int main(){
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
@@ -93,6 +103,19 @@ int main(){
 	d.add_node(1);
 	d.display();
 	cout<<std::boolalpha<<d.check_palindrome()<<"\n";
+
+	linked_list e;
+	e.add_node(7);
+	e.add_node(1);
+	e.add_node(6);
+	linked_list f;
+	f.add_node(5);
+	f.add_node(9);
+	f.add_node(2);
+	e.display();
+	f.display();
+
+	cout<<sum_lists(e,f)<<"\n";
 
 	return 0; 
 }

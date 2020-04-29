@@ -271,7 +271,7 @@ bool linked_list::check_palindrome(){
 
 
 
-void linked_list::display() const {
+void linked_list::display(){
 
     if(this->head==NULL){
         return;
@@ -293,6 +293,27 @@ void linked_list::display() const {
         cout<<last<<"->null"<<"\n";
     }
 
+}
+
+int linked_list::represent_number(){
+
+    int number=0;
+    int multiplier=1;
+
+    node *tmp;
+    tmp=this->head;
+
+    while(tmp!=NULL){
+
+        int item=tmp->data;
+
+        item=item*multiplier;
+        number+=item;
+        multiplier*=10;
+        tmp=tmp->next;
+    }
+
+    return number;
 }
 
 int linked_list::size() const {
