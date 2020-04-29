@@ -65,21 +65,17 @@ int main(){
 	a.add_node(2);
 	a.add_node(5);
 	a.add_node(6);
-
 	a.display();
 
 	linked_list b;
 	a.remove_duplicates();
-
 	b=a;
 	b.add_node(7);
 	b.add_node(9);
 	b.display();
 	a.display();
-	
 	int from_last_a=a.kth_to_last(1); 
 	int from_last_b=b.kth_to_last(2);
-
 	cout<<from_last_a<<"\n";
 	cout<<from_last_b<<"\n";
 
@@ -88,7 +84,6 @@ int main(){
 	c.add_node(8);
 	c.add_node(4);
 	c.display();
-
 	cout<<std::boolalpha<<c.check_palindrome()<<"\n";
 
 	linked_list d;
