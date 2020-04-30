@@ -163,7 +163,7 @@ void linked_list::remove_node(int n){
     delete tmp; // tmp points to the node we removed
 }
 
-// can be first or last
+// can be first or last     1-2-3-4
 void linked_list::remove_last_node(){
 
     node* tmp;
@@ -173,8 +173,9 @@ void linked_list::remove_last_node(){
         tmp=tmp->next;
     }
 
-    delete tmp->next;
+    delete this->tail;
     this->tail=tmp;
+    this->tail->next=NULL;
     this->sz--;
 }
 
@@ -254,7 +255,7 @@ bool linked_list::check_palindrome(){
     bool mid_flag=false;
     stack<int> item_stack;
 
-    // Odd palindromes like 12321, 78687
+    // Odd palindromes like 12321, 78687 as opposed to even ones like 1221, 9889
     if(this->sz%2!=0){
         mid_flag=true;
     }

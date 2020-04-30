@@ -6,7 +6,7 @@ Linked List data structure in linked_list.cpp
 
 Refer to stack_self.cpp for details.
 
-Issues
+Fixed Issues
 
 1. lldb/gdb debugger reveals that after initializing a stack_self object, my linked_list classes copy 
 constructor gets called with the linked_list argument defaulting to null, which on iterating gives
@@ -39,10 +39,12 @@ int main(){
 	a.push(5);
 	a.push(6);
 	a.display();
-	a.pop();
-	a.pop();
 	cout<<a.peek()<<"\n";
+
+	a.pop();
+	a.pop();
 	a.display();
+	cout<<a.peek()<<"\n";
 
 	return 0;
 }
