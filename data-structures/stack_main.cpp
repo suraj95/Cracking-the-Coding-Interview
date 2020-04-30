@@ -12,6 +12,9 @@ Issues
 constructor gets called with the linked_list argument defaulting to null, which on iterating gives
 segmentation fault (at linked_list.cpp:40:20).
 
+2. pop() method for stack is giving segmentation fault. My linked_list class had a remove_node() method 
+which was only meant for nodes that are NOT first or last. So I had to implement a new method called 
+remove_last_node() but it is giving problems. 
 
 */
 
@@ -36,10 +39,10 @@ int main(){
 	a.push(5);
 	a.push(6);
 	a.display();
-	// a.pop();
-	// a.pop();
+	a.pop();
+	a.pop();
 	cout<<a.peek()<<"\n";
-	// a.display();
+	a.display();
 
 	return 0;
 }

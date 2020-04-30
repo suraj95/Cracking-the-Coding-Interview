@@ -11,7 +11,9 @@ class linked_list{
 
 private:
 	node *head;
-	int sz; 
+	node *tail;
+
+	int sz;
 
 public:
 	linked_list();
@@ -21,6 +23,7 @@ public:
 	
 	void add_node(int n);
 	void remove_node(int n);
+	void remove_last_node();
 	void remove_all();
 	void remove_duplicates();
 	
@@ -32,6 +35,7 @@ public:
 	int represent_number();
 
 	node* show_head() const;
+	node* show_tail() const;
 
 };
 

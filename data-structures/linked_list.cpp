@@ -18,6 +18,8 @@ We simply use the :: scope operator to write the function definition.
 linked_list::linked_list(){
 
     this->head = NULL;
+    this->tail = NULL;
+
     this->sz=0;
 }
 
@@ -33,6 +35,8 @@ initialized object is assigned a new value from another existing object.
 linked_list::linked_list(const linked_list& L){
 
     this->head=NULL;
+    this->tail = NULL;
+
     this->sz=0;
 
     node* tmp=L.head;
@@ -67,6 +71,7 @@ linked_list& linked_list::operator=(const linked_list& L){
 
         // Move Semantics (turn expensive copies to cheap moves)
         std::swap(head, temp.head);
+        std::swap(tail, temp.tail);
         std::swap(sz, temp.sz);
     }
 
@@ -102,6 +107,7 @@ void linked_list::add_node(int n){
         // Uninitialized pointer is NOT the same as nullptr !
 
         this->head->next=NULL;
+        this->tail=this->head;
     }
     else{
 
@@ -114,7 +120,8 @@ void linked_list::add_node(int n){
 
             The author had used a tail pointer to keep track of the tail of the linkled list 
             which I removed because it seemed unnecessary. But I can see how the tail pointer can 
-            be useful for adding nodes at O(1).
+            be useful for adding nodes at O(1). Right now, I have added tail pointer purely for the 
+            reason that peek() and pop() methods in stack should be of O(1).
 
         */
 
@@ -125,6 +132,8 @@ void linked_list::add_node(int n){
 
         tmp->next=new node;
         tmp->next->data=n;
+
+        this->tail=tmp->next; // point tail at the newly added node
 
         // Uninitialized pointer is NOT the same as nullptr !
         tmp->next->next=NULL;
@@ -154,6 +163,21 @@ void linked_list::remove_node(int n){
     delete tmp; // tmp points to the node we removed
 }
 
+// can be first or last
+void linked_list::remove_last_node(){
+
+    node* tmp;
+    tmp=this->head;
+
+    while(tmp->next!=this->tail){
+        tmp=tmp->next;
+    }
+
+    delete tmp->next;
+    this->tail=tmp;
+    this->sz--;
+}
+
 void linked_list::remove_all(){	
 
     node* current=this->head;
@@ -173,6 +197,7 @@ void linked_list::remove_all(){
 
 	this->sz=0;
 	this->head=NULL;
+    this->tail=NULL;
 
 }
 
@@ -331,6 +356,10 @@ int linked_list::size() const {
 
 node* linked_list::show_head() const {
     return this->head;
+}
+
+node* linked_list::show_tail() const {
+    return this->tail;
 }
 
 

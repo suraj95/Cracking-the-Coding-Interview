@@ -1,4 +1,4 @@
-# To use gdb/lldb debugger, compile with -f flag after g++ and then open executable with gdb/lldb command
+# To use gdb/lldb debugger, compile with -g flag after g++ and then open executable with gdb/lldb command
 
 1. Chapter 1: Arrays and Strings
 

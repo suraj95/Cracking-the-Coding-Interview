@@ -48,26 +48,15 @@ void stack_self::push(int n){
     this->L.add_node(n);
 }
 
-
-/*
-    head for linked_list is the starting node, while peek() and pop() are supposed to act on the 
-    tail node. I can either iterate it all the way, but that would make the operation O(n) instead of 
-    O(1) which pretty much defeats the point of using a stack. I should implement a tail pointer in 
-    my base linked_list class.
-*/
-
 void stack_self::pop(){
 
-    this->L.remove_node(this->peek());
+    this->L.remove_last_node();
 }
-
 
 int stack_self::peek() const{
 
-    return this->L.show_head()->data;
+    return this->L.show_tail()->data;
 }
-
-
 
 int stack_self::size() const{
 
