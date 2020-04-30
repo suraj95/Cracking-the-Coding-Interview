@@ -12,10 +12,6 @@ Output:
 3
 1->2->3->5->6->8->4->null
 
-Known Issues:
-
-- No new issues
-
 Fixed Issues:
 
 1. Destructor giving segmentation fault because "shallow copies" reference same object which 
@@ -30,25 +26,7 @@ pointer.
 
 #define _CRT_SECURE_NO_WARNINGS
 
-#include<algorithm>
-#include<cctype>
-#include<cmath>
-#include<cstdio>
-#include<cstdlib>
-#include<cstring>
-#include<functional>
-#include<iomanip>
 #include<iostream>
-#include<list>
-#include<map>
-#include<numeric>
-#include<queue>
-#include<set>
-#include<stack>
-#include<string>
-#include<utility>
-#include<vector>
-#include<forward_list>
 
 #include "linked_list_h.h" 
 
@@ -114,7 +92,6 @@ int main(){
 	f.add_node(2);
 	e.display();
 	f.display();
-
 	cout<<sum_lists(e,f)<<"\n";
 
 	return 0; 
