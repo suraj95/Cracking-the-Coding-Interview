@@ -37,15 +37,24 @@ linked_list::linked_list(const linked_list& L){
 
     node* tmp=L.head;
 
-    while(tmp->next!=NULL){
-        int item=tmp->data;
-        this->add_node(item); 
+/*
+    data structures like stack and queue that implement using linked_list where giving segmentation
+    fault below because the copy constuctor was getting called with a null argument, instead of the 
+    default constructor. And delegating constructors in only allowed in C++11. So, for now I am using
+    an if statement to bypass it.
+*/
 
-        tmp=tmp->next;
+    if(tmp!=NULL){
+        while(tmp->next!=NULL){
+            int item=tmp->data;
+            this->add_node(item); 
+
+            tmp=tmp->next;
+        }
+
+        int last_item=tmp->data;
+        this->add_node(last_item);
     }
-
-    int last_item=tmp->data;
-    this->add_node(last_item);
 }
 
 // assignment operator
@@ -220,7 +229,7 @@ bool linked_list::check_palindrome(){
     bool mid_flag=false;
     stack<int> item_stack;
 
-    // Odd palindromes like radar, civic
+    // Odd palindromes like 12321, 78687
     if(this->sz%2!=0){
         mid_flag=true;
     }

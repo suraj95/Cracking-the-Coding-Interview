@@ -9,8 +9,7 @@ using namespace std;
 // default constructor
 stack_self::stack_self(){
 
-    linked_list temp;
-    this->L=temp;
+    this->L=linked_list(); // unfortunately, this is still calling copy constructor
 }
 
 // copy constructor
@@ -49,23 +48,34 @@ void stack_self::push(int n){
     this->L.add_node(n);
 }
 
+
+/*
+    head for linked_list is the starting node, while peek() and pop() are supposed to act on the 
+    tail node. I can either iterate it all the way, but that would make the operation O(n) instead of 
+    O(1) which pretty much defeats the point of using a stack. I should implement a tail pointer in 
+    my base linked_list class.
+*/
+
 void stack_self::pop(){
 
-    this->L.remove_node(this->L.show_head()->data);
+    this->L.remove_node(this->peek());
 }
+
 
 int stack_self::peek() const{
 
     return this->L.show_head()->data;
 }
 
+
+
 int stack_self::size() const{
 
     return this->L.size();
 }
 
-void display(){
-    cout<<"display function called"<<"\n";
+void stack_self::display(){
+    this->L.display();
 }
 
 

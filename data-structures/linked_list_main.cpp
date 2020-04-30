@@ -1,6 +1,6 @@
 /*
 
-This is a crude implementation of linkedlist class for the problems in Pages 94 and 95
+This is a crude implementation of a Linked List data structure for the problems in Pages 94 and 95
 from the book "Cracking the Coding Interview" by Gayle Laakmann. Refer to linked_list.cpp 
 for details.
 
