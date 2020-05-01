@@ -163,8 +163,19 @@ void linked_list::remove_node(int n){
     delete tmp; // tmp points to the node we removed
 }
 
-// can be first or last     1-2-3-4
+// can be first or last  (method implemented specifically for popping items from stack)
 void linked_list::remove_last_node(){
+
+    // if there is only one item in linked_list
+    if(this->sz==1){
+        delete this->tail;
+        this->tail=NULL;
+        this->head=NULL;
+
+        this->sz=0;
+
+        return;
+    }
 
     node* tmp;
     tmp=this->head;
