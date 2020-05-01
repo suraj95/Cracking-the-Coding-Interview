@@ -17,6 +17,7 @@ public:
 	void push(int n);
 	void pop();
 	int peek() const;
+	int show_head() const;
 	int size() const;
 	void display();
 };

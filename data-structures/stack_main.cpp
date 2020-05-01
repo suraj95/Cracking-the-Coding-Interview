@@ -6,6 +6,13 @@ Linked List data structure in linked_list.cpp
 
 Refer to stack_self.cpp for details.
 
+Output:
+
+1->2->3->2->5->6->null
+6
+1->2->3->2->null
+2
+
 Fixed Issues
 
 1. lldb/gdb debugger reveals that after initializing a stack_self object, my linked_list classes copy 

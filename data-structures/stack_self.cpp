@@ -55,11 +55,18 @@ void stack_self::push(int n){
 void stack_self::pop(){
 
     this->L.remove_last_node();
+
 }
 
 int stack_self::peek() const{
 
     return this->L.show_tail()->data;
+}
+
+// method implemented specifically for peek method in Queue data structure
+int stack_self::show_head() const{
+
+    return this->L.show_head()->data;
 }
 
 int stack_self::size() const{
