@@ -11,7 +11,9 @@ public:
 	stack_self(const stack_self& S);
 	stack_self& operator=(const stack_self& S);
 	~stack_self();
-	
+
+
+	bool empty();
 	void push(int n);
 	void pop();
 	int peek() const;

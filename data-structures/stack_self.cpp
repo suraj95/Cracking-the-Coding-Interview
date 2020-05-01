@@ -15,7 +15,7 @@ stack_self::stack_self(){
 // copy constructor
 stack_self::stack_self(const stack_self& S){
 
-    linked_list temp(S.L); // call the linked_list classes copy constructor
+    linked_list temp(S.L); // call the linked_list copy constructor
     this->L=temp;
 }
 
@@ -42,6 +42,10 @@ stack_self::~stack_self(){
 
 
 // Class methods
+
+bool stack_self::empty(){
+    return this->L.size()==0;
+}
 
 void stack_self::push(int n){
 

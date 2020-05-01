@@ -15,4 +15,5 @@ g++ linked_list_main.cpp linked_list.cpp -o a.out
 
 3. Chapter 3: Stacks and Queues
 
-g++ stack_main.cpp stack_self.cpp -o a.out
+g++ stack_main.cpp stack_self.cpp linked_list.cpp -o a.out
+g++ queue_main.cpp queue_self.cpp stack_self.cpp linked_list.cpp -o a.out
