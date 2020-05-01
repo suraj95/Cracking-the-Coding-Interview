@@ -7,9 +7,17 @@ Linked List data structure in linked_list.cpp.
 
 Refer to queue_self.cpp for details.
 
+Output:
+
+1->2->3->2->5->6->null
+1
+3->2->5->6->null
+3
+
 Fixed Issues
 
-1. dequeue() method for our queue data structure gives segmentation fault.
+1. dequeue() method for our queue data structure gives Segmentation fault when trying to remove 
+the last remaining item from our internal Stack.
 
 */
 
@@ -38,7 +46,7 @@ int main(){
 	cout<<a.peek()<<"\n";
 
 	a.dequeue();
-	//a.dequeue();
+	a.dequeue();
 	a.display();
 	cout<<a.peek()<<"\n";
 

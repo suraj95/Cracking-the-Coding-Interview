@@ -74,14 +74,19 @@ void queue_self::dequeue(){ // dequeue is of O(n)
         this->S2.push(item);
     }
 
-    // swap our variables now
-    std::swap(S1,S2);
+    // now, S1 only has 1 item, 
+    S1.pop();
 
+    while(S2.size()!=0){
+        int item=this->S2.peek();
+        this->S2.pop();
+        this->S1.push(item);
+    }
 }
 
 int queue_self::peek() const{
 
-    return this->S1.peek();
+    return this->S1.show_head();
 }
 
 int queue_self::size() const{
