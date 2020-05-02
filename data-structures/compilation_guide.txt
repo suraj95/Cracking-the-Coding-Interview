@@ -1,6 +1,6 @@
 # To use gdb/lldb debugger, compile with -g flag after g++ and then open executable with gdb/lldb command
 
-1. Chapter 1: Arrays and Strings
+Chapter 1: Arrays and Strings
 
 g++ check_permutation.cpp -o a.out
 g++ isUnique.cpp -o a.out
@@ -9,11 +9,11 @@ g++ compression.cpp -o a.out
 g++ oneway.cpp -o a.out
 g++ rotation.cpp -o a.out
 
-2. Chapter 2: Linked Lists
+Chapter 2: Linked Lists
 
 g++ linked_list_main.cpp linked_list.cpp -o a.out
 
-3. Chapter 3: Stacks and Queues
+Chapter 3: Stacks and Queues
 
 g++ stack_main.cpp stack_self.cpp linked_list.cpp -o a.out
 g++ queue_main.cpp queue_self.cpp stack_self.cpp linked_list.cpp -o a.out

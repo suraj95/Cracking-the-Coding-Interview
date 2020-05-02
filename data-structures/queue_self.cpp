@@ -66,7 +66,7 @@ void queue_self::enqueue(int n){ // enqueue is of O(1)
 
 void queue_self::dequeue(){ // dequeue is of O(n)
 
-    // keep popping from Stack 1 and push to Stack 2 till the first item is left
+    // keep popping from Stack 1 and push to Stack 2 till only the first item is left
 
     while(S1.size()!=1){
         int item=this->S1.peek();
@@ -74,7 +74,7 @@ void queue_self::dequeue(){ // dequeue is of O(n)
         this->S2.push(item);
     }
 
-    // now, S1 only has 1 item, 
+    // now, S1 only has 1 item
     S1.pop();
 
     while(S2.size()!=0){
