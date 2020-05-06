@@ -9,8 +9,8 @@ private:
 
 public:
 	queue_self();
-	queue_self(const queue_self& S);
-	queue_self& operator=(const queue_self& S);
+	queue_self(const queue_self& Q);
+	queue_self& operator=(const queue_self& Q);
 	~queue_self();
 	
 	void enqueue(int n);

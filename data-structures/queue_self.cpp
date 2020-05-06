@@ -8,8 +8,8 @@
 using namespace std;
 
 /*
-    We could have implemented this easily by using our linked_list class, but question 3.4 specifically 
-    asks us to implement this using 2 Stacks. The idea of two stacks is that enqueue() operation will 
+    We could have implemented this easily by using our linked_list class, but question 3.4 on Page 99
+    specifically asks us to implement this using 2 Stacks. The idea of two stacks is that enqueue() operation will 
     take O(1) by simply pushing our item to Stack 1, but dequeue() will take O(n) as we will have to
     internally reverse the order of items by popping them from Stack 1 and pushing them to Stack 2.
 
