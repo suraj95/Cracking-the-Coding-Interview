@@ -5,7 +5,7 @@ This is a crude implementation of Binary Search Tree data structure class for th
 
 Refer to BST_self.cpp for details.
 
-Output:
+This is our Binary Search Tree
 
                    20
                  /    \
@@ -20,6 +20,21 @@ Output:
             /   \          /
            /     \        /
           7      12      42
+
+
+Output:
+ 1 
+ 5 
+ 7 
+ 9 
+ 12 
+ 15 
+ 20 
+ 25 
+ 30 
+ 40 
+ 42 
+ 45
 
 Issues:
 

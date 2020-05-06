@@ -72,6 +72,7 @@ int BST_self::size() const{
 // helper function that recursively calls itself to add nodes
 
 node* insert(node* ptr, int n){
+
 	if(ptr==NULL){
 		ptr = new node;
     	ptr->data = n;
@@ -79,24 +80,22 @@ node* insert(node* ptr, int n){
     	ptr->left_child = NULL;
     	ptr->right_child = NULL;
 	}
-	
-	return ptr;
-}
 
-void BST_self::add_node(int n){
-    if(this->root==NULL){
-    	this->root=insert(this->root, n);
-    }
     // n is greater. Should be inserted to right
-    else if(n>this->root->data){
-    	root->right_child = insert(root->right_child, n);
+    else if(n>ptr->data){
+    	ptr->right_child = insert(ptr->right_child, n);
     } 
 
     // n is smaller should be inserted to left
     else{
-    	root->left_child = insert(root->left_child, n);
+    	ptr->left_child = insert(ptr->left_child, n);
     } 
 
+	return ptr;
+}
+
+void BST_self::add_node(int n){
+    this->root=insert(this->root, n); // our node will trickle down  
     this->sz++;
 }
 
@@ -110,10 +109,25 @@ void BST_self::remove_all(){
 	// add code
 }
 
-void BST_self::display(){
-	// add code
 
-	cout<<this->sz<<"\n";
+// helper function that recursively calls itself and prints nodes
+void inorder(node* ptr){
+/* 
+	inorder representation means the parent node is printed in between the
+	two children.
+*/
+
+	if(ptr!=NULL) // checking if the ptr is not null
+    {
+        inorder(ptr->left_child); // visiting left child
+        cout<<" "<<ptr->data<<" \n";// printing data at node
+        inorder(ptr->right_child);// visiting right child
+    }
+}
+
+
+void BST_self::display(){
+	inorder(this->root); // our node will trickle down 
 }
 
 node* BST_self::search(int n) const{

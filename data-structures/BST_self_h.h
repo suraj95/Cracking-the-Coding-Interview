@@ -23,12 +23,12 @@ public:
 	int find_minimum();
 	int size() const;
 
-	void add_node(int x);
-	void remove_node(int x);
+	void add_node(int n);
+	void remove_node(int n);
 	void remove_all();
 	void display();
 
-	node* search(int x) const;
+	node* search(int n) const;
 	node* show_root() const;
 };
 
