@@ -9,6 +9,8 @@ using namespace std;
 The class is declared and defined in header files. We don't have to redefine here. 
 We simply use the :: scope operator to write the function definition.
 
+Reference template- https://www.codesdope.com/blog/article/binary-search-tree-in-c/
+
 */
 
 
@@ -61,18 +63,45 @@ int BST_self::find_minimum(){
 	return 0;
 }
 
-int BST_self::size(){
+int BST_self::size() const{
 
 	return this->sz;
 }
 
-void BST_self::add_node(int x){
 
-	// add code
+// helper function that recursively calls itself to add nodes
+
+node* insert(node* ptr, int n){
+	if(ptr==NULL){
+		ptr = new node;
+    	ptr->data = n;
+
+    	ptr->left_child = NULL;
+    	ptr->right_child = NULL;
+	}
+	
+	return ptr;
+}
+
+void BST_self::add_node(int n){
+    if(this->root==NULL){
+    	this->root=insert(this->root, n);
+    }
+    // n is greater. Should be inserted to right
+    else if(n>this->root->data){
+    	root->right_child = insert(root->right_child, n);
+    } 
+
+    // n is smaller should be inserted to left
+    else{
+    	root->left_child = insert(root->left_child, n);
+    } 
+
+    this->sz++;
 }
 
 
-void BST_self::remove_node(int x){
+void BST_self::remove_node(int n){
 	// add code
 }
 
@@ -83,15 +112,17 @@ void BST_self::remove_all(){
 
 void BST_self::display(){
 	// add code
+
+	cout<<this->sz<<"\n";
 }
 
-node* search(int x) const{
+node* BST_self::search(int n) const{
 	// add code
 
 	return this->root;
 }
 
-node* show_root() const{
+node* BST_self::show_root() const{
 
 	return this->root;
 }
