@@ -19,7 +19,6 @@ linked_list::linked_list(){
 
     this->head = NULL;
     this->tail = NULL;
-
     this->sz=0;
 }
 
@@ -36,15 +35,14 @@ linked_list::linked_list(const linked_list& L){
 
     this->head=NULL;
     this->tail = NULL;
-
     this->sz=0;
 
     node* tmp=L.head;
 
 /*
-    data structures like stack and queue that implement using linked_list where giving segmentation
+    data structures like stack and queue that implement using linked_list were giving segmentation
     fault below because the copy constuctor was getting called with a null argument, instead of the 
-    default constructor. And delegating constructors in only allowed in C++11. So, for now I am using
+    default constructor. And delegating constructors is only allowed in C++11. So, for now I am using
     an if statement to bypass it.
 */
 

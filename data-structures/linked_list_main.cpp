@@ -12,15 +12,15 @@ Output:
 3
 1->2->3->5->6->8->4->null
 
-Fixed Issues:
+Issues:
 
 1. Destructor giving segmentation fault because "shallow copies" reference same object which 
-when deallocated twice gives "Abort trap: 6" error.
+when deallocated twice gives "Abort trap: 6" error. [Fixed]
 2. add_node() method giving segmentation fault (usually when adding nodes 3 and 5) sometimes in copy 
 constructor while other times in the first linked_list itself. Was happening because of uninitialized 
-pointer.
+pointer.[Fixed]
 3. Modification after using assignment operator giving segmentation fault due to going out of bounds.
-4. Destructor giving segmentation fault due to going out of bounds.
+4. Destructor giving segmentation fault due to going out of bounds. [Fixed]
 
 */
 

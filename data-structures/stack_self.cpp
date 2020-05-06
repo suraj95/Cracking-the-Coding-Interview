@@ -44,6 +44,7 @@ stack_self::~stack_self(){
 // Class methods
 
 bool stack_self::empty(){
+    
     return this->L.size()==0;
 }
 

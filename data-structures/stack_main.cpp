@@ -13,15 +13,15 @@ Output:
 1->2->3->2->null
 2
 
-Fixed Issues
+Issues:
 
 1. lldb/gdb debugger reveals that after initializing a stack_self object, my linked_list classes copy 
 constructor gets called with the linked_list argument defaulting to null, which on iterating caused
-segmentation fault (at linked_list.cpp:40:20).
+segmentation fault (at linked_list.cpp:40:20). [Fixed]
 
 2. pop() method for stack is giving segmentation fault. My linked_list class had a remove_node() method 
 which was only meant for nodes that are NOT first or last. So I had to implement a new method called 
-remove_last_node() which was giving problems. 
+remove_last_node() which was giving problems. [Fixed]
 
 */
 

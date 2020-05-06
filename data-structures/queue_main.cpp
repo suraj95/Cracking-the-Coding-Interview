@@ -1,6 +1,6 @@
 /*
 
-This is a crude implementation of Que data structure class for the problems in Pages 98 and 99
+This is a crude implementation of Queue data structure class for the problems in Pages 98 and 99
 from the book "Cracking the Coding Interview" by Gayle Laakmann. It is done using two stacks from 
 my self-implemented Stack data structure which was in turn implemented using my self implemented
 Linked List data structure in linked_list.cpp.
@@ -14,10 +14,10 @@ Output:
 3->2->5->6->null
 3
 
-Fixed Issues
+Issues:
 
 1. dequeue() method for our queue data structure gives Segmentation fault when trying to remove 
-the last remaining item from our internal Stack.
+the last remaining item from our internal Stack. [Fixed]
 
 */
 

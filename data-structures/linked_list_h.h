@@ -12,7 +12,6 @@ class linked_list{
 private:
 	node *head;
 	node *tail;
-
 	int sz;
 
 public:
