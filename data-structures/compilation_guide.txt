@@ -11,9 +11,13 @@ g++ rotation.cpp -o a.out
 
 Chapter 2: Linked Lists
 
-g++ linked_list_main.cpp linked_list.cpp -o a.out
+g++ linked_list_main.cpp linked_list_self.cpp -o a.out
 
 Chapter 3: Stacks and Queues
 
-g++ stack_main.cpp stack_self.cpp linked_list.cpp -o a.out
-g++ queue_main.cpp queue_self.cpp stack_self.cpp linked_list.cpp -o a.out
+g++ stack_main.cpp stack_self.cpp linked_list_self.cpp -o a.out
+g++ queue_main.cpp queue_self.cpp stack_self.cpp linked_list_self.cpp -o a.out
+
+Chapter 4: Trees and Graphs
+
+g++ BST_main.cpp BST_self.cpp -o a.out
