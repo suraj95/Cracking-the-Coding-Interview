@@ -33,9 +33,14 @@ Output:
 Node found !
 Node found !
 Node not found
-
+30
+12
+42
 
 Issues:
+
+1. In the random_node() method, the random nodes returned are not uniformly distributed because I am 
+using rand function.
 
 
 */
@@ -107,11 +112,12 @@ int main(){
   b.remove_node(45);
   b.display();
   cout<<"============\n";
+
   b.search(12);
   b.search(20);
   b.search(11);
-
-
-
+  cout<<b.random_node()->data<<"\n";
+  cout<<b.random_node()->data<<"\n";
+  cout<<b.random_node()->data<<"\n";
 
 }

@@ -29,6 +29,7 @@ public:
 
 	node* search(int n) const;
 	node* show_root() const;
+	node* random_node() const;
 };
 
 

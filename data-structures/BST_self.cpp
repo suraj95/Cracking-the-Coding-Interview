@@ -1,4 +1,6 @@
 #include<iostream>
+#include<cstdlib>
+#include<queue>
 
 #include "BST_self_h.h"
 
@@ -216,7 +218,7 @@ void BST_self::display(){
 // helper function that recursively calls itself and searches the node
 node* iterate_search(node* ptr, int n){
 
-	//if root->data is x then the element is found
+	//if root->data is n then the element is found
 	if(ptr==NULL || ptr->data==n){
 		return ptr;
 	} 
@@ -254,8 +256,46 @@ node* BST_self::search(int n) const{
 	}
 }
 
+
 node* BST_self::show_root() const{
 
 	return this->root;
+}
+
+node* BST_self::random_node() const{
+
+    if(this->root==NULL){
+        return nullptr;
+    }
+
+    // not using self-implemented queue because it is hardcoded to integer data type
+    queue <node*> q;
+    q.push(this->root);
+
+    /*
+    Using rand function and the modulus operator is usually discouraged because it may not generate 
+    numbers uniformly (it depends on the range and the value of RAND_MAX). I'll stick to this for now.
+    */
+
+    int idx=rand()%this->size();
+
+    std::vector <node*> result;
+
+    while(!q.empty()){
+
+        node *temp = q.front();
+        q.pop(); 
+
+        if(temp->left_child != NULL){
+            q.push(temp->left_child); 
+        }
+        if(temp->right_child != NULL){
+            q.push(temp->right_child); 
+        }
+
+        result.push_back(temp);
+    }
+
+    return result[idx];
 }
 
