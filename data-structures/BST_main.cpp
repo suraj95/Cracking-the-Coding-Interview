@@ -18,7 +18,9 @@ Output:
 40 
 42 
 45 
+true
 ============
+1
 5 
 7 
 9 
@@ -27,20 +29,29 @@ Output:
 20 
 25 
 30 
-40 
 42 
+false
+5
 ============
 Node found !
 Node found !
 Node not found
-30
-12
-42
+9
+5
+25
+true
+20
+false
+
 
 Issues:
 
 1. In the random_node() method, the random nodes returned are not uniformly distributed because I am 
-using rand function.
+using rand function which is discouraged.
+
+2. In the check_balanced() method, I am only checking children of root node. Further analysis shows 
+that in the testing of the last BST, I am getting Max depths 0 and 5 suggesting that nodes are getting
+added only on one side (on the right) because my root pointer is getting rearranged.
 
 
 */
@@ -56,7 +67,7 @@ using namespace std;
 int main(){
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-   /*
+/*
 
 
                    20
@@ -73,7 +84,7 @@ int main(){
            /     \        /
           7      12      42
 
-  */
+*/
 
 	BST_self a;
   a.add_node(20);
@@ -89,35 +100,53 @@ int main(){
   a.add_node(45);
   a.add_node(42);
   a.display();
+  cout<<boolalpha<<a.check_balanced()<<"\n";
   cout<<"============\n";
 
-    /*
+/*
+
+The structure of the BST is based on the order in which the elements are added. So, even if you use 
+the same elements, but populate in a different order, you will get a different tree.
+    
+*/
+
+  BST_self b(a);
+  cout<<b.show_root()->data<<"\n";
+  b.remove_node(1);
+  b.remove_node(45);
+  b.remove_node(40);
+  b.display();
+  cout<<boolalpha<<b.check_balanced()<<"\n";
+  cout<<b.show_root()->data<<"\n";
+  cout<<"============\n";
+
+/*
                    20
                  /    \
                 /      \
                5       30
-                 \     /\
-                  \   /  \
-                  15 25  42
-                 /     
-                /  
-               9        
-             /   \          
-            /     \        
-           7      12      
-    */
+             /   \     /\
+            /     \   /  \
+           1      15 25  40
+                /          \
+               /            \
+              9             45
+                           /
+                          /
+                         42
+*/
 
-  BST_self b(a);
-  b.remove_node(1);
-  b.remove_node(45);
-  b.display();
-  cout<<"============\n";
-
-  b.search(12);
-  b.search(20);
-  b.search(11);
-  cout<<b.random_node()->data<<"\n";
-  cout<<b.random_node()->data<<"\n";
-  cout<<b.random_node()->data<<"\n";
+  a.search(12);
+  a.search(20);
+  a.search(11);
+  cout<<a.random_node()->data<<"\n";
+  cout<<a.random_node()->data<<"\n";
+  cout<<a.random_node()->data<<"\n";
+  cout<<boolalpha<<a.check_balanced()<<"\n";
+  a.remove_node(7);
+  a.remove_node(12);
+  a.remove_node(9);
+  cout<<a.show_root()->data<<"\n";
+  cout<<boolalpha<<a.check_balanced()<<"\n";
 
 }

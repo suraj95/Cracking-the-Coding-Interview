@@ -114,7 +114,8 @@ node* insert(node* ptr, int n){
 }
 
 void BST_self::add_node(int n){
-    this->root=insert(this->root, n); // our node will trickle down  
+    node* tmp=this->root;
+    this->root=insert(tmp, n); // our node will trickle down  
     this->sz++;
 }
 
@@ -170,7 +171,8 @@ node* remove(node* ptr, int n){
 }
 
 void BST_self::remove_node(int n){
-	this->root=remove(this->root,n); // node will trickle down
+    node* tmp=this->root;
+	this->root=remove(tmp,n); // node will trickle down
 	this->sz--;
 }
 
@@ -211,7 +213,8 @@ void print_inorder(node* ptr){
 
 
 void BST_self::display(){
-	print_inorder(this->root); // our node will trickle down 
+    node* tmp=this->root;
+	print_inorder(tmp); // our node will trickle down 
 }
 
 
@@ -236,7 +239,8 @@ node* iterate_search(node* ptr, int n){
 
 node* BST_self::search(int n) const{
 
-	node* tmp=iterate_search(this->root,n);
+    node* tmp=this->root;
+	node* result=iterate_search(tmp,n);
 
 /*
 	NULL is a “manifest constant” (a #define of C) that’s actually an integer that can be assigned to
@@ -244,11 +248,10 @@ node* BST_self::search(int n) const{
 	self-defined type, that can convert into a pointer, but not into integers.
 */
 
-
 	// if NULL is returned, that means a hit has not been found
-	if(tmp!=NULL){
+	if(result!=NULL){
 		cout<<"Node found !\n";
-		return tmp;
+		return result;
 	}
 	else{
 		cout<<"Node not found\n";
@@ -262,6 +265,11 @@ node* BST_self::show_root() const{
 	return this->root;
 }
 
+/*
+    We cannot use a recursive function like we used before for add, remove and search because
+    we will have to keep track of how many times it was called using a global variable, or
+    through arguments in the function. So the iterative solution is a lot cleaner and concise.
+*/
 node* BST_self::random_node() const{
 
     if(this->root==NULL){
@@ -270,12 +278,13 @@ node* BST_self::random_node() const{
 
     // not using self-implemented queue because it is hardcoded to integer data type
     queue <node*> q;
-    q.push(this->root);
+    node* tmp=this->root;
+    q.push(tmp);
 
-    /*
+/*
     Using rand function and the modulus operator is usually discouraged because it may not generate 
     numbers uniformly (it depends on the range and the value of RAND_MAX). I'll stick to this for now.
-    */
+*/
 
     int idx=rand()%this->size();
 
@@ -297,5 +306,42 @@ node* BST_self::random_node() const{
     }
 
     return result[idx];
+}
+
+
+// helper function that calculates the max depth of a node
+int maxDepth(node* node)  
+{  
+    if (node == NULL)  
+        return 0;  
+    else
+    {  
+        /* compute the depth of each subtree */
+        int lDepth = maxDepth(node->left_child);  
+        int rDepth = maxDepth(node->right_child);  
+      
+        /* use the larger one */
+        if (lDepth > rDepth) {
+            return(lDepth + 1);  
+        }
+        else{
+            return(rDepth + 1);  
+        }
+    }  
+}  
+
+/*
+    A balanced tree is defined to be a tree such that the heights of the two subtrees of any node 
+    never differ by more than one.
+
+    For now, I am just checking the root nodes children.
+*/
+
+bool BST_self::check_balanced() const{
+
+    node* tmp1=this->root->left_child;
+    node* tmp2=this->root->right_child;
+
+    return maxDepth(tmp1)==maxDepth(tmp2);
 }
 
