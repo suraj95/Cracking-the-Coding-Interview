@@ -20,7 +20,6 @@ public:
 	BST_self& operator=(const BST_self& B);
 	~BST_self();
 
-	int find_minimum();
 	int size() const;
 
 	void add_node(int n);

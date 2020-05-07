@@ -56,11 +56,19 @@ BST_self::~BST_self(){
     this->remove_all();
 }
 
-int BST_self::find_minimum(){
+// helper function that recursively calls itself and finds the minimum node
+node* find_minimum(node* ptr){
 
-	// add code
+	if(ptr == NULL){
+        return NULL;
+	}
 
-	return 0;
+	// node with minimum value will have no left child
+    else if(ptr->left_child != NULL){
+    	return find_minimum(ptr->left_child); // left most element will be minimum
+    }
+        
+    return ptr;
 }
 
 int BST_self::size() const{
@@ -70,7 +78,6 @@ int BST_self::size() const{
 
 
 // helper function that recursively calls itself to add nodes
-
 node* insert(node* ptr, int n){
 
 	if(ptr==NULL){
@@ -100,8 +107,59 @@ void BST_self::add_node(int n){
 }
 
 
+// helper function that recursively calls itself to remove nodes
+node* remove(node* ptr, int n){
+
+	//searching for the item to be deleted
+    if(ptr==NULL){
+        return NULL;
+    }
+
+    if (n>ptr->data){
+        ptr->right_child = remove(ptr->right_child, n);
+    }
+    else if(n<ptr->data){
+        ptr->left_child = remove(ptr->left_child, n);
+    }
+    else
+    {
+        //No Children
+        if(ptr->left_child==NULL && ptr->right_child==NULL)
+        {
+            delete ptr;
+            return NULL;
+        }
+
+        //One Child
+        else if(ptr->left_child==NULL || ptr->right_child==NULL)
+        {
+            node *temp;
+            if(ptr->left_child==NULL)
+                temp = ptr->right_child;
+            else
+                temp = ptr->left_child;
+            delete ptr;
+            return temp;
+        }
+
+        //Two Children
+        else
+        {
+        	/*
+				when node has two children, we simply replace node with the node containing
+				the smallest item. Then that node will trickle down.
+        	*/
+            node *temp = find_minimum(ptr->right_child);
+            ptr->data = temp->data;
+            ptr->right_child = remove(ptr->right_child, temp->data);
+        }
+    }
+    return ptr;
+}
+
 void BST_self::remove_node(int n){
-	// add code
+	this->root=remove(this->root,n); // node will trickle down
+	this->sz--;
 }
 
 
@@ -120,7 +178,7 @@ void inorder(node* ptr){
 	if(ptr!=NULL) // checking if the ptr is not null
     {
         inorder(ptr->left_child); // visiting left child
-        cout<<" "<<ptr->data<<" \n";// printing data at node
+        cout<<ptr->data<<" \n";// printing data at node
         inorder(ptr->right_child);// visiting right child
     }
 }
