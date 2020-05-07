@@ -22,17 +22,27 @@ BST_self::BST_self(){
     this->sz=0;
 }
 
+// helper function that calls itself recursively and adds the nodes
+void iterate_add(BST_self& B, node* ptr){
+
+	if(ptr!=NULL) // checking if the ptr is not null
+    {
+    	int data=ptr->data;
+
+        iterate_add(B,ptr->left_child); // visiting left child
+        B.add_node(data);
+        iterate_add(B,ptr->right_child);// visiting right child
+    }
+}
 
 // copy constructor
 BST_self::BST_self(const BST_self& B){
 
     this->root = NULL;
     this->sz=0;
-    node* tmp=B.root;
 
-    if(tmp!=NULL){
-    	// add code to copy BST here
-    }
+    node* tmp=B.root;
+    iterate_add(*this,tmp); // node will trickle down
 }
 
 // assignment operator
@@ -163,8 +173,22 @@ void BST_self::remove_node(int n){
 }
 
 
+// helper function that calls itself recursively and deletes the nodes
+void iterate_delete(BST_self& B, node* ptr){
+
+	if(ptr!=NULL) // checking if the ptr is not null
+    {
+    	int data=ptr->data;
+
+        iterate_add(B,ptr->left_child); // visiting left child
+        B.remove_node(data);
+        iterate_add(B,ptr->right_child);// visiting right child
+    }
+}
+
 void BST_self::remove_all(){
-	// add code
+	node * tmp=this->root;
+	iterate_delete(*this,tmp);
 }
 
 
@@ -187,6 +211,7 @@ void inorder(node* ptr){
 void BST_self::display(){
 	inorder(this->root); // our node will trickle down 
 }
+
 
 node* BST_self::search(int n) const{
 	// add code

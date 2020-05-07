@@ -99,9 +99,10 @@ int main(){
            7      12      
     */
 
-  a.remove_node(1);
-  a.remove_node(45);
-  a.display();
+  BST_self b(a);
+  b.remove_node(1);
+  b.remove_node(45);
+  b.display();
   cout<<"============\n";
 
 
