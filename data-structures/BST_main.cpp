@@ -30,6 +30,9 @@ Output:
 40 
 42 
 ============
+Node found !
+Node found !
+Node not found
 
 
 Issues:
@@ -104,6 +107,9 @@ int main(){
   b.remove_node(45);
   b.display();
   cout<<"============\n";
+  b.search(12);
+  b.search(20);
+  b.search(11);
 
 
 

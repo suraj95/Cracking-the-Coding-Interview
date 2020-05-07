@@ -193,7 +193,7 @@ void BST_self::remove_all(){
 
 
 // helper function that recursively calls itself and prints nodes
-void inorder(node* ptr){
+void print_inorder(node* ptr){
 /* 
 	inorder representation means the parent node is printed in between the
 	two children.
@@ -201,22 +201,57 @@ void inorder(node* ptr){
 
 	if(ptr!=NULL) // checking if the ptr is not null
     {
-        inorder(ptr->left_child); // visiting left child
+        print_inorder(ptr->left_child); // visiting left child
         cout<<ptr->data<<" \n";// printing data at node
-        inorder(ptr->right_child);// visiting right child
+        print_inorder(ptr->right_child);// visiting right child
     }
 }
 
 
 void BST_self::display(){
-	inorder(this->root); // our node will trickle down 
+	print_inorder(this->root); // our node will trickle down 
 }
 
 
-node* BST_self::search(int n) const{
-	// add code
+// helper function that recursively calls itself and searches the node
+node* iterate_search(node* ptr, int n){
 
-	return this->root;
+	//if root->data is x then the element is found
+	if(ptr==NULL || ptr->data==n){
+		return ptr;
+	} 
+
+	// n is greater, so we will search the right subtree
+    else if(n>ptr->data){
+    	return iterate_search(ptr->right_child, n);
+    } 
+      
+    // n is smaller than the data, so we will search the left subtree
+    else{
+    	return iterate_search(ptr->left_child, n);
+    }
+}
+
+node* BST_self::search(int n) const{
+
+	node* tmp=iterate_search(this->root,n);
+
+/*
+	NULL is a “manifest constant” (a #define of C) that’s actually an integer that can be assigned to
+	a pointer because of an implicit conversion. nullptr is a keyword representing a value of 
+	self-defined type, that can convert into a pointer, but not into integers.
+*/
+
+
+	// if NULL is returned, that means a hit has not been found
+	if(tmp!=NULL){
+		cout<<"Node found !\n";
+		return tmp;
+	}
+	else{
+		cout<<"Node not found\n";
+		return nullptr;
+	}
 }
 
 node* BST_self::show_root() const{
