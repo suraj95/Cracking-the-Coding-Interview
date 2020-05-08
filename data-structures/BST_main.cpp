@@ -62,6 +62,9 @@ using rand function which is discouraged.
 
 2. In the check_balanced() method, I am only checking children of root node.
 
+3. For copy constructor and assignment operator, I am getting a different tree because the order 
+in which nodes get added is different.
+
 
 */
 
@@ -145,8 +148,22 @@ int main(){
 /*
 
 The structure of the BST is based on the order in which the elements are added. So, even if you use 
-the same elements, but populate in a different order, you will get a different tree.
-    
+the same elements, but populate in a different order, you will get a different tree. 
+
+Since I am iterating trees inorder, they are also getting added inorder giving rise to a highly 
+disbalanced tree of the following format.
+
+                     5
+                      \
+                       \
+                        9
+                         \
+                          \
+                           11
+                            \
+                             \
+                              15
+
 */
 
   BST_self b(a);
