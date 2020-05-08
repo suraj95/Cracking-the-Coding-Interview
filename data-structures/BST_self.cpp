@@ -114,8 +114,8 @@ node* insert(node* ptr, int n){
 }
 
 void BST_self::add_node(int n){
-    node* tmp=this->root;
-    this->root=insert(tmp, n); // our node will trickle down  
+    
+    this->root=insert(this->root, n); // our node will trickle down  
     this->sz++;
 }
 
@@ -171,8 +171,8 @@ node* remove(node* ptr, int n){
 }
 
 void BST_self::remove_node(int n){
-    node* tmp=this->root;
-	this->root=remove(tmp,n); // node will trickle down
+    
+	this->root=remove(this->root,n); // node will trickle down
 	this->sz--;
 }
 
@@ -191,8 +191,8 @@ void iterate_delete(BST_self& B, node* ptr){
 }
 
 void BST_self::remove_all(){
-	node * tmp=this->root;
-	iterate_delete(*this,tmp);
+	
+	iterate_delete(*this,this->root); // node will trickle down
 }
 
 
@@ -213,8 +213,8 @@ void print_inorder(node* ptr){
 
 
 void BST_self::display(){
-    node* tmp=this->root;
-	print_inorder(tmp); // our node will trickle down 
+    
+	print_inorder(this->root); // our node will trickle down 
 }
 
 
@@ -239,8 +239,7 @@ node* iterate_search(node* ptr, int n){
 
 node* BST_self::search(int n) const{
 
-    node* tmp=this->root;
-	node* result=iterate_search(tmp,n);
+	node* result=iterate_search(this->root,n);
 
 /*
 	NULL is a “manifest constant” (a #define of C) that’s actually an integer that can be assigned to
@@ -278,8 +277,7 @@ node* BST_self::random_node() const{
 
     // not using self-implemented queue because it is hardcoded to integer data type
     queue <node*> q;
-    node* tmp=this->root;
-    q.push(tmp);
+    q.push(this->root);
 
 /*
     Using rand function and the modulus operator is usually discouraged because it may not generate 
@@ -334,14 +332,50 @@ int maxDepth(node* node)
     A balanced tree is defined to be a tree such that the heights of the two subtrees of any node 
     never differ by more than one.
 
-    For now, I am just checking the root nodes children.
+    For now, I am just checking the depth of the root nodes children for simplicity.
 */
 
 bool BST_self::check_balanced() const{
 
-    node* tmp1=this->root->left_child;
-    node* tmp2=this->root->right_child;
+    return maxDepth(this->root->left_child)==maxDepth(this->root->right_child);
+}
 
-    return maxDepth(tmp1)==maxDepth(tmp2);
+bool iterate_check(node* ptr){
+    if(ptr==NULL){
+        return true;
+    }
+
+    // left_child is NULL
+    else if(ptr->left_child==NULL && ptr->right_child!=NULL){
+        return ptr->data < ptr->right_child->data && iterate_check(ptr->right_child);
+    }
+
+    // right_child is NULL
+    else if(ptr->left_child!=NULL && ptr->right_child==NULL){
+        return iterate_check(ptr->left_child) && ptr->left_child->data < ptr->data;
+    }
+
+    // both children are NULL
+    else if(ptr->left_child==NULL && ptr->right_child==NULL){
+        return true;
+    }
+
+    // no children are NULL
+    else if(ptr->left_child!=NULL && ptr->right_child!=NULL){
+        return iterate_check(ptr->left_child) && 
+        ptr->left_child->data < ptr->data < ptr->right_child->data &&
+        iterate_check(ptr->right_child);
+    }
+
+    // Program won't reach here. Adding this just to remove Compiler warning. 
+    else{
+        return false;
+    }
+
+}
+
+bool BST_self::validate_BST() const{
+
+    return iterate_check(this->root); // node will trickle down
 }
 

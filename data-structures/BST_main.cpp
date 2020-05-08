@@ -18,21 +18,8 @@ Output:
 40 
 42 
 45 
+============
 true
-============
-1
-5 
-7 
-9 
-12 
-15 
-20 
-25 
-30 
-42 
-false
-5
-============
 Node found !
 Node found !
 Node not found
@@ -42,6 +29,30 @@ Node not found
 true
 20
 false
+============
+true
+1
+5 
+15 
+20 
+25 
+30 
+42 
+false
+============
+true
+1
+1 
+5 
+15 
+20 
+25 
+30 
+40 
+42 
+45 
+false
+============
 
 
 Issues:
@@ -49,9 +60,7 @@ Issues:
 1. In the random_node() method, the random nodes returned are not uniformly distributed because I am 
 using rand function which is discouraged.
 
-2. In the check_balanced() method, I am only checking children of root node. Further analysis shows 
-that in the testing of the last BST, I am getting Max depths 0 and 5 suggesting that nodes are getting
-added only on one side (on the right) because my root pointer is getting rearranged.
+2. In the check_balanced() method, I am only checking children of root node.
 
 
 */
@@ -100,25 +109,8 @@ int main(){
   a.add_node(45);
   a.add_node(42);
   a.display();
-  cout<<boolalpha<<a.check_balanced()<<"\n";
   cout<<"============\n";
 
-/*
-
-The structure of the BST is based on the order in which the elements are added. So, even if you use 
-the same elements, but populate in a different order, you will get a different tree.
-    
-*/
-
-  BST_self b(a);
-  cout<<b.show_root()->data<<"\n";
-  b.remove_node(1);
-  b.remove_node(45);
-  b.remove_node(40);
-  b.display();
-  cout<<boolalpha<<b.check_balanced()<<"\n";
-  cout<<b.show_root()->data<<"\n";
-  cout<<"============\n";
 
 /*
                    20
@@ -135,7 +127,7 @@ the same elements, but populate in a different order, you will get a different t
                           /
                          42
 */
-
+  cout<<boolalpha<<a.validate_BST()<<"\n";
   a.search(12);
   a.search(20);
   a.search(11);
@@ -148,5 +140,31 @@ the same elements, but populate in a different order, you will get a different t
   a.remove_node(9);
   cout<<a.show_root()->data<<"\n";
   cout<<boolalpha<<a.check_balanced()<<"\n";
+  cout<<"============\n";
+
+/*
+
+The structure of the BST is based on the order in which the elements are added. So, even if you use 
+the same elements, but populate in a different order, you will get a different tree.
+    
+*/
+
+  BST_self b(a);
+  cout<<boolalpha<<b.validate_BST()<<"\n";
+  cout<<b.show_root()->data<<"\n";
+  b.remove_node(1);
+  b.remove_node(45);
+  b.remove_node(40);
+  b.display();
+  cout<<boolalpha<<b.check_balanced()<<"\n";
+  cout<<"============\n";
+
+
+  BST_self c=a;
+  cout<<boolalpha<<c.validate_BST()<<"\n";
+  cout<<c.show_root()->data<<"\n";
+  c.display();
+  cout<<boolalpha<<c.check_balanced()<<"\n";
+  cout<<"============\n";
 
 }

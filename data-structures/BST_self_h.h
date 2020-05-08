@@ -32,6 +32,7 @@ public:
 	node* random_node() const;
 
 	bool check_balanced() const;
+	bool validate_BST() const;
 };
 
 
