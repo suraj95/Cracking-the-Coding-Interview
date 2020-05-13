@@ -37,14 +37,61 @@ void iterate_add(BST_self& B, node* ptr){
     }
 }
 
+
+// helper function that clones nodes
+node* clone_node(node* orgNode){
+
+	if(orgNode!=NULL){
+		node* ptr = new node;
+		ptr->data = orgNode->data;
+
+    	ptr->left_child=NULL;
+    	ptr->right_child=NULL;
+
+    	return ptr;
+	}
+
+	else{
+		return NULL;
+	}
+}
+
+// helper function that copies trees
+void copy_inorder(node* copyTree, node* orgTree){
+
+    if(orgTree !=NULL){
+
+        //left side
+        node* newLeftNode = clone_node(orgTree->left_child);
+        copyTree->left_child = newLeftNode;
+        copy_inorder(copyTree->left_child, orgTree->left_child);
+
+        //right side
+        node* newRightNode = clone_node(orgTree->right_child);
+        copyTree->right_child = newRightNode;
+        copy_inorder(copyTree->right_child, orgTree->right_child);
+    }
+}
+
+
+/*
+
+The structure of the BST is based on the order in which the elements are added. So, even if you use 
+the same elements, but populate in a different order, you will get a different tree. That is why it is
+important to "clone" the tree properly. 
+
+*/
+
 // copy constructor
 BST_self::BST_self(const BST_self& B){
 
-    this->root = NULL;
+    this->root = NULL;  // just to make sure pointer is initialized
     this->sz=0;
 
-    node* tmp=B.root;
-    iterate_add(*this,tmp); // node will trickle down
+    node* tmp=B.show_root();
+    this->root=clone_node(tmp);
+    copy_inorder(this->root, tmp); // node will trickle down
+    this->sz=B.size();
 }
 
 // assignment operator

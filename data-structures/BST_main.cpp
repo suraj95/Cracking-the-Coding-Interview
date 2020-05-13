@@ -63,8 +63,9 @@ using rand function which is discouraged.
 2. In the check_balanced() method, I am only checking children of root node.
 
 3. For copy constructor and assignment operator, I am getting a different tree because the order 
-in which nodes get added is different.
+in which nodes get added is different. [Fixed]
 
+4. copy_inorder() function is giving Segmentation Fault. [Fixed]
 
 */
 
@@ -147,22 +148,16 @@ int main(){
 
 /*
 
-The structure of the BST is based on the order in which the elements are added. So, even if you use 
-the same elements, but populate in a different order, you will get a different tree. 
-
-Since I am iterating trees inorder, they are also getting added inorder giving rise to a highly 
-disbalanced tree of the following format.
-
-                     5
-                      \
-                       \
-                        9
-                         \
-                          \
-                           11
-                            \
-                             \
-                              15
+                   20
+                 /    \
+                /      \
+               5       30
+                \      /\
+                 \    /  \
+                 15  25  42
+                 /          
+                /           
+               9             
 
 */
 
@@ -176,6 +171,22 @@ disbalanced tree of the following format.
   cout<<boolalpha<<b.check_balanced()<<"\n";
   cout<<"============\n";
 
+
+/*
+                   20
+                 /    \
+                /      \
+               5       30
+             /   \     /\
+            /     \   /  \
+           1      15 25  40
+                /          \
+               /            \
+              9             45
+                           /
+                          /
+                         42
+*/
 
   BST_self c=a;
   cout<<boolalpha<<c.validate_BST()<<"\n";
