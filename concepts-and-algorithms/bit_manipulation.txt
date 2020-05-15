@@ -1,0 +1,20 @@
+================
+Bit Manipulation
+================
+
+This is the process of performing logical operations on bit sequences in order to reach a desired result. Bit manipulation allows us to use these operators to reach certain sequences in an a clean and efficient manner, which is just one reason why it’s essential to understand what operators are available and how we can make use of them.
+
+0110 + 0010 = (2^1+2^2) + (2^1) = 6 + 2 = 8 = 2^3 = 1000
+
+0110 - 0011 = (2^1+2^2) - (2^0+2^1) = 6 - 3 = 3 = 2 + 1 = 0011
+
+0011 * 0101 = (2^0+2^1) * (2^0+2^2) = 3 * 5 = 15 =  8 + 4 + 2 + 1 = 1111
+
+1101 ^ 0101 = 1000 (This is XOR Operation)
+
+Left Shift Operator (<<): Takes two numbers, left shifts the bits of the first operand, the second operand decides the number of places to shift. Or in other words left shifting an integer "x" with an integer "y" (x<<y) is equivalent to multiplying x with 2^y (2 raise to power y).
+
+Right Shift Operator(>>): Takes two numbers, right shifts the bits of the first operand, the second operand decides the number of places to shift. Similarly right shifting (x>>y) is equivalent to dividing x with 2^y.
+
+1101 >> 2 = (2^0+2^1+2^4) >> 2 = 19 >> 2 = 19 / 2^2 = 19 % 4 = 3 = 0011
+
