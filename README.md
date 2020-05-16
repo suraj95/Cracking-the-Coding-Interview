@@ -21,8 +21,10 @@ Practicing implementing the data structures and algorithm (on paper, and then on
 ![alt text](./images/copy.jpg)
 
 
-GDB debugger tutorial (for segmentation faults):- http://www.unknownroad.com/rtfm/gdbtut/gdbtoc.html
+## Important Links
 
-GDB installation for MacOS:- https://www.ics.uci.edu/~pattis/common/handouts/macmingweclipse/allexperimental/mac-gdb-install.html
+[GDB debugger tutorial (for segmentation faults)](http://www.unknownroad.com/rtfm/gdbtut/gdbtoc.html)
 
-macOS uses Xcode Developer tools for compiling, which uses LLDB debugger which is very similar to GDB:- https://lldb.llvm.org/use/map.html
+[GDB installation for MacOS](https://www.ics.uci.edu/~pattis/common/handouts/macmingweclipse/allexperimental/mac-gdb-install.html)
+
+[macOS uses Xcode Developer tools for compiling, which uses LLDB debugger which is very similar to GDB](https://lldb.llvm.org/use/map.html)
