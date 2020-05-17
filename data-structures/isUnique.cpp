@@ -1,6 +1,13 @@
 /*
 Is Unique: Implement an algorithm to determine if a string has all unique characters. What if you 
-cannot use additional data structures?
+cannot use additional data structures ?
+
+Suraj --> true
+Lily --> false
+Raj --> true
+Joseph--> true
+Salman -->false
+
 */
 
 #define _CRT_SECURE_NO_WARNINGS

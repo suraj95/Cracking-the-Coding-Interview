@@ -1,5 +1,11 @@
 /*
 Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
+
+Suraj, Rajsu --> true
+Tea, Eat --> true
+Rat, Cat --> false
+Qwerty, Wertqy --> true
+
 */
 
 #define _CRT_SECURE_NO_WARNINGS
