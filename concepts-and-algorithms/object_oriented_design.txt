@@ -1,0 +1,28 @@
+======================
+Object Oriented Design
+======================
+
+Object-oriented design questions require a candidate to sketch out the classes and methods to implement technical problems or real-life objects. These problems give-or at least are believed to given interviewer insight into your coding style.
+
+---------------
+How to Approach
+---------------
+
+Regardless of whether the object is a physical item or a technical task, object-oriented design questions can be tackled in similar ways. The following approach will work well for many problems-
+
+1. Handle Ambiguity
+
+Object-oriented design (000) questions are often intentionally vague in order to test whether you'll make assumptions or if you'll ask clarifying questions. When being asked an object-oriented design question, you should inquire who is going to use it and how they are going to use it.
+
+2. Define the Core Objects
+
+Now that we understand what we're designing, we should consider what the "core objects" in a system are. For example, suppose we are asked to do the object-oriented design for a restaurant. Our core objects might be things like Table, Guest, Party, Order, Meal, Employee, Server, and Host.
+
+3. Analyze Relationships
+
+Having more or less decided on our core objects, we now want to analyze the relationships between the objects. Which objects are members of which other objects? Do any objects inherit from any others? Are relationships many-to-many or one-to-many?
+
+4. Investigate Actions
+
+At this point, you should have the basic outline of your object-oriented design. What remains is to consider the key actions that the objects will take and how they relate to each other. You may find that you have forgotten some objects, and you will need to update your design.
+

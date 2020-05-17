@@ -1,0 +1,35 @@
+======================
+Math and Logic Puzzles
+======================
+
+So-called "puzzles" (or brain teasers) are some of the most hotly debated questions, and many companies have policies banning them. Unfortunately, even when these questions are banned, you still may find yourself being asked one of them. Why? Because no one can agree on a definition of what a brainteaser is.
+
+-------------
+Prime Numbers
+-------------
+
+Every positive integer can be decomposed into a product of primes. Note that many of these primes have an exponent of zero.
+
+84 = 2^2 * 3^1 * 5^0 * 7^1 * 11^0 * 13^0 * 17^0 * ...
+
+
+-----------
+Probability
+-----------
+
+Probability can be intuitively understood as a Venn diagram that visualises two events A and B. The areas of the two circles represent their relative probability, and the overlapping area is the event {A and B}.
+
+P(A and B) = P(B given A) P(A)
+
+P(A or B) = P(A) + P(B) - P(A and B)
+
+P(A given B) = P(B given A) * P(A)/P(B)   [Bayes Theorem]
+
+P(A and B) = P(A) P(B)  		[If A and B are independent]
+
+P(A or B) = P(A) + P(B) 		[If A and B are mutually exclusive]
+
+
+
+
+

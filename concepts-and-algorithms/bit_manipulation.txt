@@ -12,9 +12,40 @@ This is the process of performing logical operations on bit sequences in order t
 
 1101 ^ 0101 = 1000 (This is XOR Operation)
 
-Left Shift Operator (<<): Takes two numbers, left shifts the bits of the first operand, the second operand decides the number of places to shift. Or in other words left shifting an integer "x" with an integer "y" (x<<y) is equivalent to multiplying x with 2^y (2 raise to power y).
+Left Shift Operator(<<): Takes two numbers, left shifts the bits of the first operand, the second operand decides the number of places to shift. Or in other words left shifting an integer "x" with an integer "y" (x<<y) is equivalent to multiplying x with 2^y (2 raise to power y).
+
+1101 << 2 = (2^0+2^2+2^3) << 2 = 13 << 2 = 13 * 2^2 = 13 * 4 = 52 = 110100 
 
 Right Shift Operator(>>): Takes two numbers, right shifts the bits of the first operand, the second operand decides the number of places to shift. Similarly right shifting (x>>y) is equivalent to dividing x with 2^y.
 
-1101 >> 2 = (2^0+2^1+2^4) >> 2 = 19 >> 2 = 19 / 2^2 = 19 % 4 = 3 = 0011
+1101 >> 2 = (2^0+2^2+2^3) >> 2 = 13 >> 2 = 13 / 2^2 = 13 / 4 = 3 = 0011
 
+-------------------
+Interview Questions
+-------------------
+
+1. (Debugger) Explain what the following code does: ((n & (n - 1)==0)
+
+Answer: This code checks if n is either 0 or an exact power of two. It works because a binary power of two is of the form 1000...000 and subtracting one will give you 111...111. Then, when you AND those together, you get zero.
+
+    <------ binary ------>
+ n      n    n-1   n&(n-1)
+--   ----   ----   -------
+ 0   0000   0111    0000 *
+ 1   0001   0000    0000 *
+ 2   0010   0001    0000 *
+ 3   0011   0010    0010
+ 4   0100   0011    0000 *
+ 5   0101   0100    0100
+ 6   0110   0101    0100
+ 7   0111   0110    0110
+ 8   1000   0111    0000 *
+ 9   1001   1000    1000
+10   1010   1001    1000
+11   1011   1010    1010
+12   1100   1011    1000
+13   1101   1100    1100
+14   1110   1101    1100
+15   1111   1110    1110
+
+ 
