@@ -2,7 +2,9 @@
 Bit Manipulation
 ================
 
-This is the process of performing logical operations on bit sequences in order to reach a desired result. Bit manipulation allows us to use these operators to reach certain sequences in an a clean and efficient manner, which is just one reason why it’s essential to understand what operators are available and how we can make use of them.
+This is the process of performing logical operations on bit sequences in order to reach a desired result. Bit manipulation allows us to use these operators to reach certain sequences in an a clean and efficient manner, which is just one reason why it’s essential to understand what operators are available and how we can make use of them. More or less, if you're not working with the kind of software that would benefit from bit manipulation, then you probably don't need to be using them. In fact, in many places they can make code harder to read, and really shouldn't be used unless there is a reason to.
+
+However, if you're interested, they are a useful tool given the right application. For example, if you have code which is multiplying by a power of two, it can be quicker to just left shift the bits. This can become important if you determine that the multiplication code is a bottleneck to performance. One important fact to realize is that some compilers will do some of these forms of optimization (e.g. turning the line i = i * 2 into a left shift) for you.
 
 0110 + 0010 = (2^1+2^2) + (2^1) = 6 + 2 = 8 = 2^3 = 1000
 
