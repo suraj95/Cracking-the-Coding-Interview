@@ -20,7 +20,6 @@ Practicing implementing the data structures and algorithm (on paper, and then on
 
 ![alt text](./images/copy.jpg)
 
-
 ## Important Links
 
 [GDB debugger tutorial (for segmentation faults)](http://www.unknownroad.com/rtfm/gdbtut/gdbtoc.html)
